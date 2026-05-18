@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block title %}Reports - PHC Tracker{% endblock %}
+
+{% block content %}
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+    <h1 class="h2">Reports & Exports</h1>
+</div>
+
+<div class="row">
+    <div class="col-md-4 mb-3">
+        <div class="card shadow-sm h-100">
+            <div class="card-body">
+                <h5 class="card-title">PHC Score Summary</h5>
+                <p class="card-text">View the overall score summary based on current evidence readiness.</p>
+                <a href="{% url 'reports:score_summary' %}" class="btn btn-primary">View Report</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4 mb-3">
+        <div class="card shadow-sm h-100">
+            <div class="card-body">
+                <h5 class="card-title">Missing Evidence Report</h5>
+                <p class="card-text">List of all indicators with missing or partial evidence.</p>
+                <a href="{% url 'reports:missing_evidence' %}" class="btn btn-warning">View Report</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4 mb-3">
+        <div class="card shadow-sm h-100 border-success">
+            <div class="card-body">
+                <h5 class="card-title text-success">Surveyor Print Pack</h5>
+                <p class="card-text">Generate a printable index of all indicators marked as ready for print pack.</p>
+                <a href="{% url 'reports:surveyor_pack' %}" class="btn btn-success">View Print Pack</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

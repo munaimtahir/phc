@@ -1,0 +1,79 @@
+{% extends "base.html" %}
+
+{% block title %}Indicator {{ indicator.indicator_no }} - PHC Tracker{% endblock %}
+
+{% block content %}
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+    <h1 class="h2">Indicator: {{ indicator.indicator_no }}</h1>
+    <a href="{% url 'indicators:list' %}" class="btn btn-outline-secondary">Back to List</a>
+</div>
+
+<div class="row">
+    <div class="col-md-7">
+        <div class="card mb-4 shadow-sm">
+            <div class="card-header bg-light">
+                <h5 class="mb-0">Details</h5>
+            </div>
+            <div class="card-body">
+                <p><strong>Standard:</strong> {{ indicator.standard_code }} - {{ indicator.standard_title }}</p>
+                <p><strong>Text:</strong> {{ indicator.indicator_text }}</p>
+                <hr>
+                <p><strong>Compliance Requirement:</strong><br/>{{ indicator.compliance_requirement|default:"-"|linebreaksbr }}</p>
+                <p><strong>Required Evidence:</strong><br/>{{ indicator.required_evidence|default:"-"|linebreaksbr }}</p>
+                <p><strong>Evidence Category:</strong> {{ indicator.evidence_category|default:"-" }}</p>
+                
+                <div class="mt-3">
+                    <span class="badge bg-info text-dark">Max Score: {{ indicator.max_score }}</span>
+                    {% if indicator.register_required %}<span class="badge bg-secondary">Register Required</span>{% endif %}
+                    {% if indicator.recurring_required %}<span class="badge bg-secondary">Recurring: {{ indicator.recurrence_frequency }}</span>{% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-5">
+        <div class="card mb-4 shadow-sm border-primary">
+            <div class="card-header bg-primary text-white">
+                <h5 class="mb-0">Compliance Update</h5>
+            </div>
+            <div class="card-body">
+                <form method="post" action="{% url 'indicators:detail' indicator.pk %}">
+                    {% csrf_token %}
+                    <div class="mb-3">
+                        <label class="form-label fw-bold">Evidence Status</label>
+                        <select name="evidence_status" class="form-select">
+                            {% for value, display in indicator.compliance.EVIDENCE_STATUS_CHOICES %}
+                            <option value="{{ value }}" {% if indicator.compliance.evidence_status == value %}selected{% endif %}>{{ display }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label class="form-label fw-bold">Gap Summary</label>
+                        <textarea name="gap_summary" class="form-control" rows="2">{{ indicator.compliance.gap_summary }}</textarea>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label class="form-label fw-bold">Next Action</label>
+                        <textarea name="next_action" class="form-control" rows="2">{{ indicator.compliance.next_action }}</textarea>
+                    </div>
+
+                    <div class="form-check mb-3">
+                        <input class="form-check-input" type="checkbox" name="ready_for_print_pack" id="ready_for_print_pack" {% if indicator.compliance.ready_for_print_pack %}checked{% endif %}>
+                        <label class="form-check-label" for="ready_for_print_pack">
+                            Ready for Print Pack
+                        </label>
+                    </div>
+
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div>
+                            <strong>Current Score:</strong> <span class="fs-5">{{ indicator.compliance.current_score }}</span>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Save Update</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

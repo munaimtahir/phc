@@ -22,20 +22,20 @@ Build a small, practical, single-purpose Django monolith for one fixed Punjab He
 
 ## Execution Plan & Task Checklist
 - [x] Phase 0: Repository and Source Review
-- [ ] Phase 1: Django Foundation (config, apps, auth, static, templates)
-- [ ] Phase 2: Locked PHC Indicator Master (Models)
-- [ ] Phase 3: Import Command from Real CSV
-- [ ] Phase 4: Indicator UI
-- [ ] Phase 5: Evidence Library
-- [ ] Phase 6: Digital Registers
-- [ ] Phase 7: Recurring Compliance Tracking
-- [ ] Phase 8: Dashboard
-- [ ] Phase 9: Reports and Print Pack
-- [ ] Phase 10: Admin and Basic Settings
-- [ ] Phase 11: Tests
-- [ ] Phase 12: Docker and Deployment
-- [ ] Phase 13: Documentation
-- [ ] Phase 14: Final Quality Gate
+- [x] Phase 1: Django Foundation (config, apps, auth, static, templates)
+- [x] Phase 2: Locked PHC Indicator Master (Models)
+- [x] Phase 3: Import Command from Real CSV
+- [x] Phase 4: Indicator UI
+- [x] Phase 5: Evidence Library
+- [x] Phase 6: Digital Registers
+- [x] Phase 7: Recurring Compliance Tracking
+- [x] Phase 8: Dashboard
+- [x] Phase 9: Reports and Print Pack
+- [x] Phase 10: Admin and Basic Settings
+- [x] Phase 11: Tests
+- [x] Phase 12: Docker and Deployment
+- [x] Phase 13: Documentation
+- [x] Phase 14: Final Quality Gate
 
 ## Data Mapping Decisions
 - CSV `indicator_code` -> `Indicator.indicator_no`

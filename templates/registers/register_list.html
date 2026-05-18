@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block title %}Registers - PHC Tracker{% endblock %}
+
+{% block content %}
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+    <h1 class="h2">Digital Registers</h1>
+</div>
+
+<div class="row">
+    {% for reg in registers %}
+    <div class="col-md-4 mb-4">
+        <div class="card h-100 shadow-sm">
+            <div class="card-body">
+                <h5 class="card-title">{{ reg.name }}</h5>
+                <h6 class="card-subtitle mb-2 text-muted">{{ reg.category|default:"General" }}</h6>
+                <p class="card-text">{{ reg.description|truncatechars:100 }}</p>
+                <div class="mb-2">
+                    <span class="badge bg-secondary">{{ reg.frequency|default:"On-demand" }}</span>
+                </div>
+            </div>
+            <div class="card-footer bg-transparent border-top-0 d-flex justify-content-between align-items-center">
+                <a href="{% url 'registers:detail' reg.pk %}" class="btn btn-primary btn-sm">View Log</a>
+                <a href="{% url 'registers:add_entry' reg.pk %}" class="btn btn-outline-success btn-sm">Add Entry</a>
+            </div>
+        </div>
+    </div>
+    {% empty %}
+    <div class="col-12">
+        <p>No active registers found.</p>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

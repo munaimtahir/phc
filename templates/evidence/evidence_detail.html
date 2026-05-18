@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+
+{% block title %}Evidence: {{ evidence.title }} - PHC Tracker{% endblock %}
+
+{% block content %}
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+    <h1 class="h2">Evidence: {{ evidence.title }}</h1>
+    <div>
+        <a href="{% url 'evidence:list' %}" class="btn btn-outline-secondary">Back to List</a>
+        {% if user.is_staff %}
+        <a href="{% url 'admin:evidence_evidenceitem_change' evidence.pk %}" class="btn btn-outline-primary">Edit (Admin)</a>
+        {% endif %}
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-8">
+        <div class="card mb-4 shadow-sm">
+            <div class="card-header bg-light">
+                <h5 class="mb-0">Details</h5>
+            </div>
+            <div class="card-body">
+                <p><strong>Type:</strong> {{ evidence.get_evidence_type_display }}</p>
+                <p><strong>Date:</strong> {{ evidence.evidence_date|default:"N/A" }}</p>
+                <p><strong>Uploaded By:</strong> {{ evidence.uploaded_by|default:"Unknown" }}</p>
+                <hr>
+                <p><strong>Description:</strong><br/>{{ evidence.description|default:"No description provided."|linebreaksbr }}</p>
+                
+                <div class="mt-4">
+                    {% if evidence.file %}
+                    <a href="{{ evidence.file.url }}" class="btn btn-success" target="_blank">Download / View File</a>
+                    {% endif %}
+                    {% if evidence.external_url %}
+                    <a href="{{ evidence.external_url }}" class="btn btn-outline-primary" target="_blank">External Link</a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-4">
+        <div class="card mb-4 shadow-sm">
+            <div class="card-header bg-light">
+                <h5 class="mb-0">Linked Indicators</h5>
+            </div>
+            <div class="card-body">
+                <ul class="list-group list-group-flush">
+                    {% for ind in evidence.linked_indicators.all %}
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        <div>
+                            <strong>{{ ind.indicator_no }}</strong><br>
+                            <small class="text-muted">{{ ind.indicator_text|truncatechars:50 }}</small>
+                        </div>
+                        <a href="{% url 'indicators:detail' ind.pk %}" class="btn btn-sm btn-outline-info">View</a>
+                    </li>
+                    {% empty %}
+                    <li class="list-group-item text-center text-muted">No linked indicators.</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

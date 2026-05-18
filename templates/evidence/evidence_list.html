@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+
+{% block title %}Evidence Library - PHC Tracker{% endblock %}
+
+{% block content %}
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+    <h1 class="h2">Evidence Library</h1>
+    {% if user.is_staff %}
+    <a href="{% url 'admin:evidence_evidenceitem_add' %}" class="btn btn-primary">Add Evidence (Admin)</a>
+    {% endif %}
+</div>
+
+<form method="get" class="mb-4">
+    <div class="row g-3 align-items-center">
+        <div class="col-auto">
+            <input type="text" name="q" class="form-control" placeholder="Search title..." value="{{ q }}">
+        </div>
+        <div class="col-auto">
+            <button type="submit" class="btn btn-primary">Search</button>
+            <a href="{% url 'evidence:list' %}" class="btn btn-outline-secondary">Clear</a>
+        </div>
+    </div>
+</form>
+
+<div class="table-responsive">
+    <table class="table table-striped table-hover table-bordered">
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Type</th>
+                <th>Date</th>
+                <th>Linked Indicators</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for ev in evidences %}
+            <tr>
+                <td>{{ ev.title }}</td>
+                <td>{{ ev.get_evidence_type_display }}</td>
+                <td>{{ ev.evidence_date|default:"-" }}</td>
+                <td>
+                    {% for ind in ev.linked_indicators.all %}
+                        <a href="{% url 'indicators:detail' ind.pk %}" class="badge bg-secondary text-decoration-none">{{ ind.indicator_no }}</a>
+                    {% empty %}
+                        <span class="text-muted">None</span>
+                    {% endfor %}
+                </td>
+                <td>
+                    <a href="{% url 'evidence:detail' ev.pk %}" class="btn btn-sm btn-info">View</a>
+                </td>
+            </tr>
+            {% empty %}
+            <tr><td colspan="5" class="text-center">No evidence uploaded yet.</td></tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

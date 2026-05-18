@@ -1,0 +1,129 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+    <h1 class="h2">Dashboard</h1>
+</div>
+
+{% if is_empty %}
+<div class="alert alert-warning">No indicators found. Please run the import command.</div>
+{% else %}
+
+<div class="row mb-4">
+    <!-- Readiness -->
+    <div class="col-md-3 mb-3">
+        <div class="card text-white bg-success h-100">
+            <div class="card-body">
+                <h5 class="card-title">Readiness Score</h5>
+                <h2>{{ current_score }} / {{ max_score }}</h2>
+                <p class="mb-0">{{ readiness_percentage }}% Ready</p>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Status Breakdown -->
+    <div class="col-md-5 mb-3">
+        <div class="card h-100">
+            <div class="card-body">
+                <h5 class="card-title">Indicator Status ({{ stats.total }} Total)</h5>
+                <div class="d-flex justify-content-between text-center mt-3">
+                    <div>
+                        <h4 class="text-success">{{ stats.verified }}</h4>
+                        <small>Verified</small>
+                    </div>
+                    <div>
+                        <h4 class="text-primary">{{ stats.ready }}</h4>
+                        <small>Ready</small>
+                    </div>
+                    <div>
+                        <h4 class="text-warning">{{ stats.partial }}</h4>
+                        <small>Partial</small>
+                    </div>
+                    <div>
+                        <h4 class="text-danger">{{ stats.missing }}</h4>
+                        <small>Missing</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Stats -->
+    <div class="col-md-4 mb-3">
+        <div class="card h-100">
+            <div class="card-body">
+                <h5 class="card-title">Quick Stats</h5>
+                <ul class="list-unstyled mb-0 mt-3">
+                    <li><strong>Evidence Items:</strong> {{ evidence_count }}</li>
+                    <li><strong>Active Registers:</strong> {{ active_registers }}</li>
+                    <li><strong class="text-danger">Overdue Registers:</strong> {{ overdue_registers|length }}</li>
+                    <li><strong class="text-warning">Due Soon Registers:</strong> {{ due_soon_registers|length }}</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <!-- Functional Areas -->
+    <div class="col-md-6 mb-4">
+        <div class="card h-100">
+            <div class="card-header bg-light">Functional Areas</div>
+            <div class="card-body p-0">
+                <div class="table-responsive">
+                    <table class="table table-striped mb-0">
+                        <thead>
+                            <tr>
+                                <th>Area</th>
+                                <th>Total Indicators</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for area in areas %}
+                            <tr>
+                                <td>{{ area.functional_area_code }}</td>
+                                <td>{{ area.total }}</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Actions & Alerts -->
+    <div class="col-md-6 mb-4">
+        {% if overdue_registers %}
+        <div class="card border-danger mb-3">
+            <div class="card-header bg-danger text-white">Overdue Registers</div>
+            <ul class="list-group list-group-flush">
+                {% for reg in overdue_registers %}
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    {{ reg.name }}
+                    <a href="{% url 'registers:add_entry' reg.pk %}" class="btn btn-sm btn-outline-danger">Log Entry</a>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+        {% endif %}
+        
+        <div class="card">
+            <div class="card-header bg-light">Recently Updated Indicators</div>
+            <ul class="list-group list-group-flush">
+                {% for comp in recent_updates %}
+                <li class="list-group-item">
+                    <a href="{% url 'indicators:detail' comp.indicator.pk %}">{{ comp.indicator.indicator_no }}</a> - 
+                    <span class="badge bg-secondary">{{ comp.get_evidence_status_display }}</span>
+                    <br><small class="text-muted">{{ comp.updated_at|timesince }} ago</small>
+                </li>
+                {% empty %}
+                <li class="list-group-item text-muted">No updates yet.</li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</div>
+
+{% endif %}
+{% endblock %}

@@ -1,0 +1,31 @@
+services:
+  db:
+    image: postgres:16
+    environment:
+      POSTGRES_DB: phc
+      POSTGRES_USER: phc
+      POSTGRES_PASSWORD: phc
+    volumes:
+      - phc_postgres:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U phc -d phc"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  web:
+    build: .
+    command: sh -c "python manage.py migrate && python manage.py collectstatic --noinput && gunicorn config.wsgi:application --bind 0.0.0.0:8000"
+    env_file:
+      - .env
+    volumes:
+      - ./media:/app/media
+      - ./staticfiles:/app/staticfiles
+    ports:
+      - "127.0.0.1:8018:8000"
+    depends_on:
+      db:
+        condition: service_healthy
+
+volumes:
+  phc_postgres:

@@ -76,3 +76,35 @@ Build a small, practical, single-purpose Django monolith for one fixed Punjab He
 
 ## Next Handoff Notes
 - Continuing with Phase 1.
+
+## Deployment Routing Session (2026-05-19 UTC)
+- Objective: rebind `phc.alshifalab.pk` from old AccrediOps upstream to PHC app on `127.0.0.1:8018`.
+- Paths checked:
+- `/home/munaim/srv/proxy/caddy/caddyfile` (not present)
+- `/home/munaim/srv/proxy/caddy/Caddyfile` (present; editable source)
+- `/etc/caddyfile` (not present)
+- `/etc/caddy/Caddyfile` (present; active system config)
+- Caddy runtime check:
+- `systemctl status caddy` and process args confirmed active config path `/etc/caddy/Caddyfile`.
+- App health checks:
+- `docker compose ps` in `/home/munaim/srv/apps/phc`
+- `curl -I http://127.0.0.1:8018/health/` => `HTTP/1.1 200 OK`
+- Routing change performed:
+- Updated source file block to:
+- `phc.alshifalab.pk { encode zstd gzip reverse_proxy 127.0.0.1:8018 }`
+- Synced source to system file with sudo copy.
+- Backups:
+- `/home/munaim/srv/proxy/caddy/Caddyfile.backup_20260519_105639`
+- `/etc/caddy/Caddyfile.backup_20260519_105717`
+- Validation and reload:
+- `sudo caddy validate --config /etc/caddy/Caddyfile` => `Valid configuration`
+- `sudo systemctl reload caddy` => success
+- Public verification:
+- `curl -I https://phc.alshifalab.pk` => `HTTP/2 302` (to login page, expected app behavior)
+- `curl -I https://phc.alshifalab.pk/health/` => `HTTP/2 200`
+- DNS:
+- `getent hosts phc.alshifalab.pk` => `34.10.178.210`
+- Final public status:
+- `https://phc.alshifalab.pk` is publicly reachable over HTTPS and routed to PHC app on port `8018`.
+- Risks/pending:
+- None blocking. Optional cleanup: run `caddy fmt --overwrite /etc/caddy/Caddyfile` later to clear formatting warning.

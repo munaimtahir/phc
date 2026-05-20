@@ -6,7 +6,15 @@ from datetime import date
 @login_required
 def register_list(request):
     registers = RegisterDefinition.objects.filter(active=True).order_by('name')
-    context = {'registers': registers}
+    
+    q = request.GET.get('q', '')
+    if q:
+        registers = registers.filter(name__icontains=q) | registers.filter(category__icontains=q)
+        
+    context = {
+        'registers': registers,
+        'q': q,
+    }
     return render(request, 'registers/register_list.html', context)
 
 @login_required

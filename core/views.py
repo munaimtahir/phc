@@ -50,6 +50,8 @@ def dashboard(request):
         total=Count('id'),
     ).order_by('functional_area_code')
     
+    missing_indicators = indicators.filter(compliance__evidence_status='missing')[:5]
+    
     context = {
         'stats': stats,
         'max_score': max_score,
@@ -61,6 +63,7 @@ def dashboard(request):
         'due_soon_registers': due_soon_registers,
         'recent_updates': recent_updates,
         'areas': areas,
+        'missing_indicators': missing_indicators,
     }
     
     return render(request, 'core/dashboard.html', context)

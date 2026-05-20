@@ -8,21 +8,21 @@
 </div>
 
 <form method="get" class="mb-4">
-    <div class="row g-3 align-items-center">
-        <div class="col-auto">
-            <input type="text" name="q" class="form-control" placeholder="Search..." value="{{ q }}">
+    <div class="row g-2 align-items-center">
+        <div class="col-md-3">
+            <input type="text" name="q" class="form-control" placeholder="Search ID or text..." value="{{ q }}">
         </div>
-        <div class="col-auto">
+        <div class="col-md-3">
             <select name="area" class="form-select">
-                <option value="">All Areas</option>
+                <option value="">All Functional Areas</option>
                 {% for code, name in areas %}
-                <option value="{{ code }}" {% if selected_area == code %}selected{% endif %}>{{ code }} - {{ name|truncatechars:30 }}</option>
-                {% endendfor %}
+                <option value="{{ code }}" {% if selected_area == code %}selected{% endif %}>{{ code }} - {{ name|truncatechars:20 }}</option>
+                {% endfor %}
             </select>
         </div>
-        <div class="col-auto">
+        <div class="col-md-3">
             <select name="status" class="form-select">
-                <option value="">All Statuses</option>
+                <option value="">All Compliance Statuses</option>
                 <option value="missing" {% if selected_status == 'missing' %}selected{% endif %}>Missing</option>
                 <option value="partial" {% if selected_status == 'partial' %}selected{% endif %}>Partial</option>
                 <option value="ready" {% if selected_status == 'ready' %}selected{% endif %}>Ready</option>
@@ -31,42 +31,42 @@
             </select>
         </div>
         <div class="col-auto">
-            <button type="submit" class="btn btn-primary">Filter</button>
+            <button type="submit" class="btn btn-primary px-3">Filter</button>
             <a href="{% url 'indicators:list' %}" class="btn btn-outline-secondary">Clear</a>
         </div>
     </div>
 </form>
 
-<div class="table-responsive">
-    <table class="table table-striped table-hover table-bordered">
-        <thead>
+<div class="table-responsive shadow-sm">
+    <table class="table table-hover table-bordered align-middle">
+        <thead class="table-dark">
             <tr>
-                <th>No.</th>
+                <th>ID</th>
                 <th>Area</th>
-                <th>Indicator Text</th>
+                <th style="width: 45%;">Indicator Requirement</th>
                 <th>Score</th>
                 <th>Status</th>
-                <th>Actions</th>
+                <th class="text-center">Actions</th>
             </tr>
         </thead>
         <tbody>
             {% for ind in indicators %}
             <tr>
-                <td>{{ ind.indicator_no }}</td>
-                <td><span title="{{ ind.functional_area_name }}">{{ ind.functional_area_code }}</span></td>
-                <td>{{ ind.indicator_text|truncatechars:80 }}</td>
-                <td>{{ ind.compliance.current_score }}/{{ ind.max_score }}</td>
+                <td><a href="{% url 'indicators:detail' ind.pk %}" class="fw-bold text-decoration-none">{{ ind.indicator_no }}</a></td>
+                <td><span class="badge bg-light text-dark border" title="{{ ind.functional_area_name }}">{{ ind.functional_area_code }}</span></td>
+                <td><div class="small">{{ ind.indicator_text }}</div></td>
+                <td><span class="fw-bold">{{ ind.compliance.current_score|floatformat:0 }}</span><small class="text-muted">/{{ ind.max_score }}</small></td>
                 <td>
-                    <span class="badge bg-{% if ind.compliance.evidence_status == 'ready' or ind.compliance.evidence_status == 'verified' %}success{% elif ind.compliance.evidence_status == 'partial' %}warning{% elif ind.compliance.evidence_status == 'not_applicable' %}secondary{% else %}danger{% endif %}">
+                    <span class="badge w-100 bg-{% if ind.compliance.evidence_status == 'ready' or ind.compliance.evidence_status == 'verified' %}success{% elif ind.compliance.evidence_status == 'partial' %}warning text-dark{% elif ind.compliance.evidence_status == 'not_applicable' %}secondary{% else %}danger{% endif %}">
                         {{ ind.compliance.get_evidence_status_display }}
                     </span>
                 </td>
-                <td>
-                    <a href="{% url 'indicators:detail' ind.pk %}" class="btn btn-sm btn-info">View / Update</a>
+                <td class="text-center">
+                    <a href="{% url 'indicators:detail' ind.pk %}" class="btn btn-sm btn-outline-primary">Update</a>
                 </td>
             </tr>
             {% empty %}
-            <tr><td colspan="6" class="text-center">No indicators found.</td></tr>
+            <tr><td colspan="6" class="text-center py-4 text-muted">No indicators found matching the criteria.</td></tr>
             {% endfor %}
         </tbody>
     </table>

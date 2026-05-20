@@ -5,7 +5,11 @@ __pycache__/
 .env
 .env.*
 !.env.example
-
+venv/
+/venv/
+venv
+/venv
+venv/lib/python3.12/site-packages/
 # Django
 db.sqlite3
 media/
@@ -20,3 +24,8 @@ staticfiles/
 .pytest_cache/
 .coverage
 htmlcov/
+
+# Node / Playwright
+node_modules/
+playwright-report/
+test-results/

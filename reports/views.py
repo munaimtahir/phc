@@ -4,7 +4,14 @@ from indicators.models import Indicator
 
 @login_required
 def report_index(request):
-    return render(request, 'reports/index.html')
+    missing_count = Indicator.objects.filter(compliance__evidence_status__in=['missing', 'partial']).count()
+    ready_count = Indicator.objects.filter(compliance__ready_for_print_pack=True).count()
+    
+    context = {
+        'missing_count': missing_count,
+        'ready_count': ready_count,
+    }
+    return render(request, 'reports/index.html', context)
 
 @login_required
 def score_summary(request):

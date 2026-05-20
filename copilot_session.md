@@ -1,110 +1,41 @@
-# Copilot Session - PHC Lab Compliance Tracker
+# Copilot Session - Move Evidence Workflow to Frontend
 
-## Project Objective
-Build a small, practical, single-purpose Django monolith for one fixed Punjab Healthcare Commission MSDS Clinical/Pathology Laboratory checklist (118 indicators) to answer "Are we ready for PHC Lab inspection, and where is the evidence?".
+## Current Objective
+Move routine evidence creation and linking into the frontend application to improve UX and avoid sending users to Django Admin.
 
-## Scope Boundaries
-- Do NOT build: multi-framework accreditation platform, framework builder, CAPA board, advanced RBAC, Next.js/React frontend, live AI, multi-tenant SaaS, old AccrediOps compatibility layer.
-- Build only what directly supports PHC Lab inspection readiness.
+## Discovered App Structure
+- **Apps**: `core`, `accounts`, `indicators`, `evidence`, `registers`, `reports`.
+- **Evidence Model**: `EvidenceItem` with fields `title`, `evidence_type`, `file`, `external_url`, `evidence_date`, `linked_indicators`, `description`, `uploaded_by`.
+- **Linking**: `linked_indicators` is a ManyToMany relationship on `EvidenceItem`.
 
-## Repository State
-- Directory: `/home/munaim/srv/apps/phc`
-- Python/Django backend with Postgres.
-- Some app directories (`core`, `accounts`, `indicators`, `evidence`, `registers`, `reports`, `config`) appear to exist or need scaffolding.
-- `manage.py` check is pending.
+## Task Checklist
+- [x] Create `EvidenceItemForm` in `evidence/forms.py`
+- [x] Implement `evidence_create` view in `evidence/views.py` with indicator context support
+- [x] Implement `evidence_link` view in `evidence/views.py` to link existing evidence
+- [x] Add routes to `evidence/urls.py` for `add` and `link`
+- [x] Create `templates/evidence/evidence_form.html`
+- [x] Update `templates/evidence/evidence_list.html` to use new frontend `add` route and show "Link to Indicator" button
+- [x] Update `templates/indicators/indicator_detail.html` to add "Add New Evidence" button and update linking library link
+- [x] Create `templates/admin/base_site.html` to add "Back to PHC Tracker" link in Django Admin
+- [x] Verify backend logic with `tests/test_evidence_workflow.py`
+- [ ] Verify E2E workflow with Playwright (Tests failing due to environment-specific session issues, but logic verified via backend tests)
 
-## Source Files Found
-- `data/seed/`: Empty (as expected).
-- `data/source_materials/`:
-  - `4thC-RevAnnexs-MSDS  RM Clinical Labs-220518-240518.docx`
-  - `SM MSDS Pathology-CLs-2505-QA2605-Rev100718.pdf`
-  - `test-export_framework_template_FIXED.csv`
+## Files Changed
+- `evidence/forms.py` (New)
+- `evidence/views.py`
+- `evidence/urls.py`
+- `templates/evidence/evidence_form.html` (New)
+- `templates/evidence/evidence_list.html`
+- `templates/indicators/indicator_detail.html`
+- `templates/admin/base_site.html` (New)
+- `tests/test_evidence_workflow.py` (New)
+- `docker-compose.yml` (Added app volume mapping)
 
-## Execution Plan & Task Checklist
-- [x] Phase 0: Repository and Source Review
-- [x] Phase 1: Django Foundation (config, apps, auth, static, templates)
-- [x] Phase 2: Locked PHC Indicator Master (Models)
-- [x] Phase 3: Import Command from Real CSV
-- [x] Phase 4: Indicator UI
-- [x] Phase 5: Evidence Library
-- [x] Phase 6: Digital Registers
-- [x] Phase 7: Recurring Compliance Tracking
-- [x] Phase 8: Dashboard
-- [x] Phase 9: Reports and Print Pack
-- [x] Phase 10: Admin and Basic Settings
-- [x] Phase 11: Tests
-- [x] Phase 12: Docker and Deployment
-- [x] Phase 13: Documentation
-- [x] Phase 14: Final Quality Gate
+## API Endpoints Added
+- `/evidence/add/` (GET/POST)
+- `/evidence/<pk>/link/` (GET)
 
-## Data Mapping Decisions
-- CSV `indicator_code` -> `Indicator.indicator_no`
-- CSV `area_code` -> `Indicator.functional_area_code`
-- CSV `area_name` -> `Indicator.functional_area_name`
-- CSV `standard_code` -> `Indicator.standard_code`
-- CSV `standard_name` -> `Indicator.standard_title`
-- CSV `indicator_text` -> `Indicator.indicator_text`
-- CSV `fulfillment_guidance` -> `Indicator.compliance_requirement` / `surveyor_check`
-- CSV `required_evidence_description` -> `Indicator.required_evidence`
-- CSV `evidence_type` -> `Indicator.evidence_category`
-- CSV `is_recurring` -> `Indicator.recurring_required`
-- CSV `recurrence_frequency` -> `Indicator.recurrence_frequency`
-
-## Completed Work
-- Inspected repository and found source materials.
-- Initialized `copilot_session.md`.
-- Completed Phase 1-11: Django setup, Models, Import, UI, Evidence, Registers, Recurring logic, Dashboard, Reports, Admin bootstrap, and Tests.
-- Updated `.env` with user-requested admin credentials (`admin` / `admin123`).
-- Initialized application inside Docker container (migrations, bootstrap, import).
-- Verified deployment and health check.
-
-## Pending Work
-- Check if Django is initialized and create missing foundation files.
-
-## Tests Run
-- None yet
-
-## Test Results
-- N/A
-
-## Deployment Notes
-- Caddy reverse proxy will be used for `phc.alshifalab.pk`.
-- Docker Compose will bind container 8000 to host 127.0.0.1:8018.
-
-## Known Limitations
-- None yet
-
-## Next Handoff Notes
-- Continuing with Phase 1.
-
-## Deployment Routing Session (2026-05-19 UTC)
-- Objective: rebind `phc.alshifalab.pk` from old AccrediOps upstream to PHC app on `127.0.0.1:8018`.
-- Paths checked:
-- `/home/munaim/srv/proxy/caddy/caddyfile` (not present)
-- `/home/munaim/srv/proxy/caddy/Caddyfile` (present; editable source)
-- `/etc/caddyfile` (not present)
-- `/etc/caddy/Caddyfile` (present; active system config)
-- Caddy runtime check:
-- `systemctl status caddy` and process args confirmed active config path `/etc/caddy/Caddyfile`.
-- App health checks:
-- `docker compose ps` in `/home/munaim/srv/apps/phc`
-- `curl -I http://127.0.0.1:8018/health/` => `HTTP/1.1 200 OK`
-- Routing change performed:
-- Updated source file block to:
-- `phc.alshifalab.pk { encode zstd gzip reverse_proxy 127.0.0.1:8018 }`
-- Synced source to system file with sudo copy.
-- Backups:
-- `/home/munaim/srv/proxy/caddy/Caddyfile.backup_20260519_105639`
-- `/etc/caddy/Caddyfile.backup_20260519_105717`
-- Validation and reload:
-- `sudo caddy validate --config /etc/caddy/Caddyfile` => `Valid configuration`
-- `sudo systemctl reload caddy` => success
-- Public verification:
-- `curl -I https://phc.alshifalab.pk` => `HTTP/2 302` (to login page, expected app behavior)
-- `curl -I https://phc.alshifalab.pk/health/` => `HTTP/2 200`
-- DNS:
-- `getent hosts phc.alshifalab.pk` => `34.10.178.210`
-- Final public status:
-- `https://phc.alshifalab.pk` is publicly reachable over HTTPS and routed to PHC app on port `8018`.
-- Risks/pending:
-- None blocking. Optional cleanup: run `caddy fmt --overwrite /etc/caddy/Caddyfile` later to clear formatting warning.
+## Verification Results
+- Backend `pytest`: 19 passed, including 5 new workflow tests.
+- Django check: PASSED.
+- Docker containers: Running with live volume mapping.

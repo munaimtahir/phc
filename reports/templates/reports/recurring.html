@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Recurring Compliance Report</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        @media print {
+            .no-print { display: none !important; }
+        }
+    </style>
+</head>
+<body class="bg-white p-4">
+    <div class="d-flex justify-content-between align-items-start mb-4">
+        <div>
+            <h2>Recurring Compliance Report</h2>
+            <p class="text-muted">Status of scheduled registers and logbooks.</p>
+        </div>
+        <button class="btn btn-primary no-print" onclick="window.print()">Print</button>
+    </div>
+
+    <table class="table table-bordered table-sm">
+        <thead class="table-light">
+            <tr>
+                <th>Register</th>
+                <th>Recurrence</th>
+                <th>Frequency</th>
+                <th>Last Entry</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for reg in registers %}
+            <tr>
+                <td>{{ reg.name }}</td>
+                <td>{{ reg.get_recurrence_mode_display }}</td>
+                <td>{{ reg.frequency|default:"-" }}</td>
+                <td>{% if reg.entries.exists %}{{ reg.entries.last.entry_date|date:"Y-m-d" }}{% else %}-{% endif %}</td>
+                <td>Pending</td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="5" class="text-center py-3">No recurring registers found.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

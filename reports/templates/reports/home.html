@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+
+{% block title %}Reports - PHC Tracker{% endblock %}
+
+{% block content %}
+<div class="row mb-4">
+    <div class="col-12">
+        <h1>Reports</h1>
+        <p class="lead">Select a report to view and print.</p>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-4 mb-4">
+        <div class="card h-100">
+            <div class="card-body">
+                <h5 class="card-title">Score Summary</h5>
+                <p class="card-text">View the current readiness score by functional area and standard.</p>
+                <a href="{% url 'report_score_summary' %}" class="btn btn-outline-primary">View Report</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4 mb-4">
+        <div class="card h-100">
+            <div class="card-body">
+                <h5 class="card-title">Missing Evidence</h5>
+                <p class="card-text">Actionable list of all missing or unverified evidence requirements.</p>
+                <a href="{% url 'report_missing_evidence' %}" class="btn btn-outline-primary">View Report</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4 mb-4">
+        <div class="card h-100">
+            <div class="card-body">
+                <h5 class="card-title">Evidence Index</h5>
+                <p class="card-text">Complete master list of all uploaded and linked evidence items.</p>
+                <a href="{% url 'report_evidence_index' %}" class="btn btn-outline-primary">View Report</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4 mb-4">
+        <div class="card h-100">
+            <div class="card-body">
+                <h5 class="card-title">Recurring Compliance</h5>
+                <p class="card-text">Status of recurring registers, logbooks, and scheduled tasks.</p>
+                <a href="{% url 'report_recurring' %}" class="btn btn-outline-primary">View Report</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4 mb-4">
+        <div class="card h-100 border-primary">
+            <div class="card-body">
+                <h5 class="card-title text-primary">Surveyor Pack Index</h5>
+                <p class="card-text">Printable master pack structured specifically for PHC inspection day.</p>
+                <a href="{% url 'report_surveyor_pack' %}" class="btn btn-primary">Generate Pack</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

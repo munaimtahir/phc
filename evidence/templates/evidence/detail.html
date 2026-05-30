@@ -1,0 +1,85 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ evidence.title }} - PHC Tracker{% endblock %}
+
+{% block content %}
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="{% url 'evidence_list' %}">Evidence Library</a></li>
+        <li class="breadcrumb-item active" aria-current="page">{{ evidence.title }}</li>
+    </ol>
+</nav>
+
+<div class="row">
+    <div class="col-md-8">
+        <div class="card mb-4">
+            <div class="card-header bg-white d-flex justify-content-between align-items-center">
+                <h4 class="mb-0">{{ evidence.title }}</h4>
+                <span class="badge bg-primary">{{ evidence.get_approval_status_display }}</span>
+            </div>
+            <div class="card-body">
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <strong>Type:</strong> {{ evidence.get_evidence_type_display }}<br>
+                        <strong>Doc Type:</strong> {{ evidence.get_document_type_display }}
+                    </div>
+                    <div class="col-md-6">
+                        <strong>Date:</strong> {{ evidence.evidence_date|default:"-" }}<br>
+                        <strong>Version:</strong> {{ evidence.version|default:"-" }}
+                    </div>
+                </div>
+                
+                {% if evidence.description %}
+                <div class="mb-3">
+                    <strong>Description:</strong>
+                    <p>{{ evidence.description }}</p>
+                </div>
+                {% endif %}
+                
+                <hr>
+                
+                <h5>Location / File</h5>
+                {% if evidence.file %}
+                    <p>File: <a href="{{ evidence.file.url }}" target="_blank">Download</a></p>
+                {% endif %}
+                {% if evidence.external_url %}
+                    <p>URL: <a href="{{ evidence.external_url }}" target="_blank">{{ evidence.external_url }}</a></p>
+                {% endif %}
+                {% if evidence.physical_file_location %}
+                    <p>Physical Location: {{ evidence.physical_file_location }}</p>
+                {% endif %}
+                {% if evidence.display_location %}
+                    <p>Display Location: {{ evidence.display_location }}</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card mb-4">
+            <div class="card-header bg-white d-flex justify-content-between align-items-center">
+                <h5 class="mb-0">Linked Requirements</h5>
+                <a href="{% url 'evidence_link' evidence.pk %}" class="btn btn-sm btn-outline-primary">Link New</a>
+            </div>
+            <div class="card-body p-0">
+                <ul class="list-group list-group-flush">
+                    {% for fulfillment in fulfillments %}
+                    <li class="list-group-item">
+                        <div class="d-flex justify-content-between align-items-center mb-1">
+                            <a href="{% url 'indicator_detail' fulfillment.evidence_requirement.indicator.pk %}">
+                                {{ fulfillment.evidence_requirement.indicator.indicator_no }}
+                            </a>
+                            <span class="badge bg-secondary">{{ fulfillment.get_status_display }}</span>
+                        </div>
+                        <small class="text-muted">{{ fulfillment.evidence_requirement.title }}</small>
+                    </li>
+                    {% empty %}
+                    <li class="list-group-item text-center text-muted">
+                        No linked requirements.
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

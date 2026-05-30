@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+
+{% block title %}Prompt Generator - PHC Tracker{% endblock %}
+
+{% block content %}
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="{% url 'indicator_list' %}">Indicators</a></li>
+        <li class="breadcrumb-item"><a href="{% url 'indicator_detail' indicator.pk %}">{{ indicator.indicator_no }}</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Generate Prompt</li>
+    </ol>
+</nav>
+
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header bg-white">
+                <h4 class="mb-0">AI Prompt Generator</h4>
+                <p class="text-muted small mb-0">For Requirement: {{ requirement.title }}</p>
+            </div>
+            <div class="card-body">
+                <form method="get" class="mb-4 d-flex gap-2">
+                    <select name="type" class="form-select w-auto">
+                        <option value="SOP / Policy" {% if prompt_type == 'SOP / Policy' %}selected{% endif %}>SOP / Policy</option>
+                        <option value="Register Template" {% if prompt_type == 'Register Template' %}selected{% endif %}>Register Template</option>
+                        <option value="Display Notice" {% if prompt_type == 'Display Notice' %}selected{% endif %}>Display Notice</option>
+                        <option value="Gap Action Plan" {% if prompt_type == 'Gap Action Plan' %}selected{% endif %}>Gap Action Plan</option>
+                    </select>
+                    <button type="submit" class="btn btn-secondary">Update Prompt</button>
+                </form>
+                
+                <div class="mb-3">
+                    <label class="form-label fw-bold">Generated Prompt</label>
+                    <textarea class="form-control" rows="15" readonly id="promptArea">{{ prompt_text }}</textarea>
+                </div>
+                
+                <div class="d-flex gap-2">
+                    <button class="btn btn-outline-primary" onclick="copyPrompt()">Copy to Clipboard</button>
+                    <a href="?type={{ prompt_type|urlencode }}&download=1" class="btn btn-primary">Download .txt</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+function copyPrompt() {
+    var copyText = document.getElementById("promptArea");
+    copyText.select();
+    copyText.setSelectionRange(0, 99999);
+    navigator.clipboard.writeText(copyText.value);
+    alert("Prompt copied to clipboard!");
+}
+</script>
+{% endblock %}

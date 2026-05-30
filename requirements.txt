@@ -1,0 +1,10 @@
+Django>=4.2,<5.0
+gunicorn
+whitenoise
+psycopg2-binary
+python-dotenv
+pytest
+pytest-django
+ruff
+markdown
+python-docx

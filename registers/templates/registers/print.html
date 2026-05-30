@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Print: {{ register.name }}</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        @media print {
+            .no-print { display: none !important; }
+            body { font-size: 12pt; }
+        }
+    </style>
+</head>
+<body class="bg-white p-4">
+    <div class="d-flex justify-content-between align-items-start mb-4">
+        <div>
+            <h2>{{ register.name }}</h2>
+            <p class="mb-0 text-muted">Category: {{ register.category }} | Printed: {% now "Y-m-d H:i" %}</p>
+        </div>
+        <button class="btn btn-primary no-print" onclick="window.print()">Print Document</button>
+    </div>
+
+    <table class="table table-bordered border-dark">
+        <thead>
+            <tr>
+                <th>Date</th>
+                <th>Data</th>
+                <th>Entered By</th>
+                <th>Verified</th>
+                <th>Sign</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for entry in entries %}
+            <tr>
+                <td>{{ entry.entry_date|date:"Y-m-d H:i" }}</td>
+                <td>
+                    {% for key, value in entry.values_json.items %}
+                        {{ key }}: {{ value }}<br>
+                    {% endfor %}
+                </td>
+                <td>{{ entry.entered_by.username|default:"-" }}</td>
+                <td>{% if entry.verified_by %}Yes{% else %}No{% endif %}</td>
+                <td></td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="5" class="text-center py-4">No entries yet.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

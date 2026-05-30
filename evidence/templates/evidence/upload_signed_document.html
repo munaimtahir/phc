@@ -1,0 +1,135 @@
+{% extends 'base.html' %}
+
+{% block title %}Upload Signed Document - {{ generated_document.document_code }}{% endblock %}
+
+{% block content %}
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="{% url 'document_transfer_center' %}">Document Import/Export</a></li>
+    <li class="breadcrumb-item"><a href="{% url 'generated_document_detail' generated_document.id %}">{{ generated_document.document_code }}</a></li>
+    <li class="breadcrumb-item active" aria-current="page">Upload Signed</li>
+  </ol>
+</nav>
+
+<div class="row">
+  <div class="col-lg-8">
+    <div class="card mb-3">
+      <div class="card-header bg-white">
+        <strong>Upload signed / finalized evidence</strong>
+      </div>
+      <div class="card-body">
+        <div class="alert alert-warning">
+          This upload links evidence to mapped requirements and indicators. It does <strong>not</strong> automatically confirm display/physical/staff awareness/register requirements unless you explicitly check them below.
+        </div>
+
+        <dl class="row">
+          <dt class="col-sm-3">Batch</dt>
+          <dd class="col-sm-9">{{ planned_document.batch.code }} — {{ planned_document.batch.name }}</dd>
+          <dt class="col-sm-3">Planned document</dt>
+          <dd class="col-sm-9"><code>{{ planned_document.code }}</code> — {{ planned_document.title }}</dd>
+          <dt class="col-sm-3">Generated draft</dt>
+          <dd class="col-sm-9"><code>{{ generated_document.document_code }}</code> — {{ generated_document.title }}</dd>
+        </dl>
+
+        <form method="post" enctype="multipart/form-data">
+          {% csrf_token %}
+          <div class="mb-3">
+            <label class="form-label">Evidence title</label>
+            {{ form.title }}
+          </div>
+          <div class="row g-3">
+            <div class="col-md-4">
+              <label class="form-label">Evidence type</label>
+              {{ form.evidence_type }}
+            </div>
+            <div class="col-md-4">
+              <label class="form-label">Document type</label>
+              {{ form.document_type }}
+            </div>
+            <div class="col-md-4">
+              <label class="form-label">Review status</label>
+              {{ form.approval_status }}
+            </div>
+          </div>
+          <div class="mb-3 mt-3">
+            <label class="form-label">Upload file</label>
+            {{ form.file }}
+            <div class="form-text">Upload the signed/final file (PDF preferred, but any file is accepted).</div>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Remarks</label>
+            {{ form.remarks }}
+          </div>
+
+          <div class="card mb-3">
+            <div class="card-header bg-light"><strong>Confirm profile conditions (optional)</strong></div>
+            <div class="card-body">
+              <div class="form-check">
+                {{ form.display_confirmed }} <label class="form-check-label">Display requirement satisfied</label>
+              </div>
+              <div class="form-check">
+                {{ form.physical_confirmed }} <label class="form-check-label">Physical proof verified</label>
+              </div>
+              <div class="form-check">
+                {{ form.staff_awareness_confirmed }} <label class="form-check-label">Staff awareness confirmed</label>
+              </div>
+              <div class="form-check">
+                {{ form.register_confirmed }} <label class="form-check-label">Register/logbook requirement satisfied</label>
+              </div>
+              <div class="form-text mt-2">Leave unchecked if not explicitly confirmed; indicators remain PARTIAL/MISSING as applicable.</div>
+            </div>
+          </div>
+
+          {% if form.errors %}
+            <div class="alert alert-danger">Please fix the errors in the form.</div>
+          {% endif %}
+
+          <button class="btn btn-primary" type="submit">Upload Signed Evidence</button>
+          <a class="btn btn-outline-secondary" href="{% url 'generated_document_detail' generated_document.id %}">Cancel</a>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-lg-4">
+    <div class="card mb-3">
+      <div class="card-header bg-white"><strong>Linked indicators</strong></div>
+      <div class="card-body">
+        {% for ind in indicators %}
+          <div class="mb-2">
+            <span class="badge border border-secondary text-dark">{{ ind.indicator_no }}</span>
+            <div class="small text-muted">{{ ind.indicator_text|truncatechars:120 }}</div>
+          </div>
+        {% empty %}
+          <div class="text-muted">No indicators linked to this planned document.</div>
+        {% endfor %}
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header bg-white"><strong>Evidence requirements</strong></div>
+      <div class="card-body">
+        {% for req in requirements %}
+          <div class="mb-3">
+            <div><span class="badge bg-secondary">{{ req.indicator.indicator_no }}</span> {{ req.title }}</div>
+            {% if req.indicator.evidence_profile %}
+              <div class="mt-1">
+                {% with p=req.indicator.evidence_profile %}
+                  {% if p.upload_required %}<span class="badge bg-info text-dark me-1">Upload</span>{% endif %}
+                  {% if p.register_required %}<span class="badge bg-info text-dark me-1">Register</span>{% endif %}
+                  {% if p.display_required %}<span class="badge bg-info text-dark me-1">Display</span>{% endif %}
+                  {% if p.physical_proof_required %}<span class="badge bg-info text-dark me-1">Physical</span>{% endif %}
+                  {% if p.staff_awareness_required %}<span class="badge bg-info text-dark me-1">Staff Awareness</span>{% endif %}
+                {% endwith %}
+              </div>
+            {% endif %}
+          </div>
+        {% empty %}
+          <div class="text-muted">No evidence requirements mapped to this planned document.</div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+

@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+
+{% block title %}Evidence Packs - PHC Tracker{% endblock %}
+
+{% block content %}
+<div class="row mb-4">
+    <div class="col-12">
+        <h1>Evidence Packs (Document Batches)</h1>
+        <p class="lead">PHC compliance documents grouped into practical batches for easier generation and management.</p>
+    </div>
+</div>
+
+<div class="row">
+    {% for batch in batches %}
+    <div class="col-md-6 col-lg-4 mb-4">
+        <div class="card h-100 border-{% if batch.priority == 'HIGH' %}primary{% elif batch.priority == 'MEDIUM' %}info{% else %}secondary{% endif %}">
+            <div class="card-header d-flex justify-content-between align-items-center">
+                <span class="badge bg-{% if batch.priority == 'HIGH' %}primary{% elif batch.priority == 'MEDIUM' %}info{% else %}secondary{% endif %}">{{ batch.code }}</span>
+                <span class="text-muted small">Seq: {{ batch.sequence_order }}</span>
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">{{ batch.name }}</h5>
+                <p class="card-text small text-muted">{{ batch.description|truncatechars:100 }}</p>
+                
+                <div class="mb-3">
+                    {% with stats=batch.document_stats %}
+                    <div class="d-flex justify-content-between small mb-1">
+                        <span>Documents:</span>
+                        <span>{{ stats.ready }} / {{ stats.total }}</span>
+                    </div>
+                    <div class="progress" style="height: 10px;">
+                        <div class="progress-bar bg-success" role="progressbar" style="width: {{ stats.percent }}%"></div>
+                    </div>
+                    {% endwith %}
+                </div>
+
+                <div class="small">
+                    {% with istats=batch.indicator_stats %}
+                    <strong>Indicators:</strong> {{ istats.ready }} ready, {{ istats.partial }} partial, {{ istats.missing }} missing
+                    {% endwith %}
+                </div>
+            </div>
+            <div class="card-footer bg-white border-top-0">
+                <a href="{% url 'batch_detail' batch.pk %}" class="btn btn-outline-primary btn-sm w-100">Open Evidence Pack</a>
+            </div>
+        </div>
+    </div>
+    {% empty %}
+    <div class="col-12">
+        <div class="alert alert-info">No document batches found. Please run the seeding command.</div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

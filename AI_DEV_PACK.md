@@ -50,6 +50,8 @@ You accepted the rule-based draft as-is for 102 indicators. The 16 flagged `need
 
 Three of those needed frequency values outside the original enum — added `quarterly` (external QA participation, QA gap reviews) and `as_needed` (new-hire orientation acknowledgment, which is event-triggered rather than calendar-based) to the frequency set.
 
+A further 42 recurring indicators had category/format resolved but no calendar frequency (`periodic_unspecified`) — the PHC manual doesn't mandate a cadence for these since it's an accreditation survey document, not an operations manual. All 42 were assigned a specific frequency by judgment; see `docs/decisions/0002-frequency-resolution-and-quality-gates.md` for the full list and reasoning. These are more debatable than the category calls — worth a look if any don't match how you actually want to run the lab.
+
 **`indicators_master.json` is now the canonical, locked indicator registry** — every one of the 118 indicators has a final `category`, `frequency`, and `evidence_format`, plus a `classification_source` (`rule_based_accepted` or `manual_override`) and `classification_note` where a manual call was made, so the reasoning stays visible rather than disappearing into the data.
 
 ## 5. Data model (draft — reflects the manual's actual structure)
@@ -135,40 +137,20 @@ Seed values on file:
 
 This is a small, fixed set of fields for now — enough for most one-time SOPs/policies to reference correctly. Anything a specific draft needs beyond this (e.g. an equipment list for a maintenance SOP) gets added to the profile incrementally rather than front-loading a large form nobody's asked for yet.
 
-## 9. Stage 0 — Build Prompt
+## 9. Build Prompt — moved to BUILD_PROMPT.md
 
-Ready to hand to Claude Code (or similar) as-is. Scoped tight per your usual pattern: registry only, no entry/scheduling/print logic yet.
-
-```
-Build Stage 0 of the PHC MSDS Compliance Tracker: the indicator registry, nothing more.
-
-Scope — build exactly this, no more:
-1. Load /indicators_master.json (118 records) into the data model below.
-2. A LabProfile record, seeded with:
-   - lab_name: Al Shifa Laboratory
-   - address: Circular Road, Jaranwala
-   - phc_registration_no: P-20787
-   - supervising_pathologist: Dr. Mubashr Ahmed
-3. A read-only registry view: list all 118 indicators, filterable by domain,
-   standard, category (physical/one_time/recurring), and frequency.
-   Show weightage and allows_partial per indicator.
-4. Nothing else. No evidence entry, no due-lists, no scoring computation,
-   no print/export, no auth beyond a single shared login stub.
-
-Data model — Domain, Standard, Indicator (id, standard_id, text, weightage,
-allows_partial, category, frequency, evidence_format, compliance_requirements,
-survey_process, retention_months), LabProfile — per the AI Dev Pack §5, §9.
-
-Do not invent business rules beyond what's specified above or in the source
-JSON. If something is ambiguous, stop and ask rather than assuming.
-
-Definition of done: registry renders all 118 indicators correctly, filters work,
-LabProfile is stored and editable, and a spot-check against indicators_master.json
-confirms no data was dropped or altered in transit.
-```
+The original Stage 0-only prompt that lived here has been superseded by
+**`BUILD_PROMPT.md`** at the repo root, which now covers Stage 0 through
+Section B in one document, with an automated **Quality Gate** per stage
+instead of a stop-and-confirm checkpoint. See
+`docs/decisions/0002-frequency-resolution-and-quality-gates.md` for why that
+changed. This pack (§1-8 above) remains the design rationale; `BUILD_PROMPT.md`
+is the operational instruction set handed to the coding agent.
 
 ## 10. Files in this pack
 
-- `indicators_master.json` — canonical, locked indicator registry (118 indicators, all manual fields + final category/frequency/evidence_format + classification source/notes for the 16 manually-resolved ones)
+- `indicators_master.json` — canonical, locked indicator registry (118 indicators, fully resolved category/frequency/evidence_format, classification source/notes for every manually-resolved item)
 - `MSDS_Indicator_Classification_Review.xlsx` — working review sheet (superseded by indicators_master.json, kept for reference)
+- `BUILD_PROMPT.md` (repo root) — the operational build prompt, Stage 0 through Section B, quality-gated
+- `docs/decisions/0001-locked-decisions.md`, `0002-frequency-resolution-and-quality-gates.md` — full decision log
 - This document

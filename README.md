@@ -17,8 +17,13 @@ for the canonical, locked registry, and `AI_DEV_PACK.md` for the full design pac
 
 ## Build order (stage-gated — read `AGENTS.md` before touching code)
 
-1. **Stage 0** — registry + Lab Profile, read-only. *(current stage — see the
-   build prompt in `AI_DEV_PACK.md` §9)*
+Full build instructions for all four stages are in `BUILD_PROMPT.md` — hand
+that whole file to the coding agent. It runs single-pass with automated
+quality gates per stage (no stop-and-confirm checkpoints), and parks any
+genuine decision point in `docs/status/PARKED_DECISIONS.md` rather than
+halting the whole run — check that file after any build session.
+
+1. **Stage 0** — registry + Lab Profile, read-only
 2. **Stage 1** — recurring entry + daily due-list + compliance scoring
 3. **Stage 2** — print/export engine
 4. **Section B** — AI drafting assistant (parallel track, starts once Stage 1 is stable)
@@ -54,5 +59,4 @@ git remote add origin <your-repo-url>
 git push -u origin main
 ```
 
-Then hand `AI_DEV_PACK.md` §9 (Stage 0 build prompt) to the coding agent working
-in this repo.
+Then hand `BUILD_PROMPT.md` to the coding agent working in this repo.

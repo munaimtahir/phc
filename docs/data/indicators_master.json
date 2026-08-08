@@ -386,10 +386,10 @@
     "weightage": 100,
     "allows_partial": false,
     "category": "recurring",
-    "frequency": "periodic_unspecified",
+    "frequency": "annual",
     "evidence_format": "photo",
-    "classification_source": "rule_based_accepted",
-    "classification_note": ""
+    "classification_source": "manual_override",
+    "classification_note": "Frequency resolved: Research activity support reviewed annually"
   },
   {
     "id": 14,
@@ -443,10 +443,10 @@
     "weightage": 100,
     "allows_partial": false,
     "category": "recurring",
-    "frequency": "periodic_unspecified",
+    "frequency": "annual",
     "evidence_format": "photo",
-    "classification_source": "rule_based_accepted",
-    "classification_note": ""
+    "classification_source": "manual_override",
+    "classification_note": "Frequency resolved: Legal/regulatory amendment review cycle"
   },
   {
     "id": 16,
@@ -571,10 +571,10 @@
     "weightage": 100,
     "allows_partial": false,
     "category": "recurring",
-    "frequency": "periodic_unspecified",
+    "frequency": "annual",
     "evidence_format": "photo",
-    "classification_source": "rule_based_accepted",
-    "classification_note": ""
+    "classification_source": "manual_override",
+    "classification_note": "Frequency resolved: Emergency detection plan reviewed annually, alongside mock drills (Ind. 23)"
   },
   {
     "id": 20,
@@ -725,10 +725,10 @@
     "weightage": 80,
     "allows_partial": true,
     "category": "recurring",
-    "frequency": "periodic_unspecified",
+    "frequency": "annual",
     "evidence_format": "photo",
-    "classification_source": "rule_based_accepted",
-    "classification_note": ""
+    "classification_source": "manual_override",
+    "classification_note": "Frequency resolved: Staff emergency training refresher, matches annual mock drill cadence"
   },
   {
     "id": 25,
@@ -938,10 +938,10 @@
     "weightage": 80,
     "allows_partial": true,
     "category": "recurring",
-    "frequency": "periodic_unspecified",
+    "frequency": "annual",
     "evidence_format": "photo",
-    "classification_source": "rule_based_accepted",
-    "classification_note": ""
+    "classification_source": "manual_override",
+    "classification_note": "Frequency resolved: Patient-rights education refresher"
   },
   {
     "id": 32,
@@ -966,10 +966,10 @@
     "weightage": 100,
     "allows_partial": false,
     "category": "recurring",
-    "frequency": "periodic_unspecified",
+    "frequency": "annual",
     "evidence_format": "document",
-    "classification_source": "rule_based_accepted",
-    "classification_note": ""
+    "classification_source": "manual_override",
+    "classification_note": "Frequency resolved: Appraisal tool review"
   },
   {
     "id": 33,
@@ -1023,10 +1023,10 @@
     "weightage": 80,
     "allows_partial": true,
     "category": "recurring",
-    "frequency": "periodic_unspecified",
+    "frequency": "annual",
     "evidence_format": "document",
-    "classification_source": "rule_based_accepted",
-    "classification_note": ""
+    "classification_source": "manual_override",
+    "classification_note": "Frequency resolved: Tied to annual appraisal cycle"
   },
   {
     "id": 35,
@@ -1094,10 +1094,10 @@
     "weightage": 100,
     "allows_partial": false,
     "category": "recurring",
-    "frequency": "periodic_unspecified",
+    "frequency": "quarterly",
     "evidence_format": "document",
-    "classification_source": "rule_based_accepted",
-    "classification_note": ""
+    "classification_source": "manual_override",
+    "classification_note": "Frequency resolved: Personnel file completeness audit"
   },
   {
     "id": 37,
@@ -1153,10 +1153,10 @@
     "weightage": 100,
     "allows_partial": false,
     "category": "recurring",
-    "frequency": "periodic_unspecified",
+    "frequency": "quarterly",
     "evidence_format": "document",
-    "classification_source": "rule_based_accepted",
-    "classification_note": ""
+    "classification_source": "manual_override",
+    "classification_note": "Frequency resolved: Training record completeness audit"
   },
   {
     "id": 39,
@@ -1181,10 +1181,10 @@
     "weightage": 100,
     "allows_partial": false,
     "category": "recurring",
-    "frequency": "periodic_unspecified",
+    "frequency": "annual",
     "evidence_format": "document",
-    "classification_source": "rule_based_accepted",
-    "classification_note": ""
+    "classification_source": "manual_override",
+    "classification_note": "Frequency resolved: Credential verification system review"
   },
   {
     "id": 40,
@@ -1209,10 +1209,10 @@
     "weightage": 100,
     "allows_partial": false,
     "category": "recurring",
-    "frequency": "periodic_unspecified",
+    "frequency": "as_needed",
     "evidence_format": "document",
-    "classification_source": "rule_based_accepted",
-    "classification_note": ""
+    "classification_source": "manual_override",
+    "classification_note": "Frequency resolved: Triggered whenever a new qualification/certificate is added"
   },
   {
     "id": 41,
@@ -1263,10 +1263,10 @@
     "weightage": 100,
     "allows_partial": false,
     "category": "recurring",
-    "frequency": "periodic_unspecified",
+    "frequency": "annual",
     "evidence_format": "photo",
-    "classification_source": "rule_based_accepted",
-    "classification_note": ""
+    "classification_source": "manual_override",
+    "classification_note": "Frequency resolved: Procurement specification review"
   },
   {
     "id": 43,
@@ -1290,10 +1290,10 @@
     "weightage": 100,
     "allows_partial": false,
     "category": "recurring",
-    "frequency": "periodic_unspecified",
+    "frequency": "monthly",
     "evidence_format": "photo",
-    "classification_source": "rule_based_accepted",
-    "classification_note": ""
+    "classification_source": "manual_override",
+    "classification_note": "Frequency resolved: Procurement order batch review"
   },
   {
     "id": 44,
@@ -1465,10 +1465,10 @@
     "weightage": 100,
     "allows_partial": false,
     "category": "recurring",
-    "frequency": "periodic_unspecified",
+    "frequency": "monthly",
     "evidence_format": "photo",
-    "classification_source": "rule_based_accepted",
-    "classification_note": ""
+    "classification_source": "manual_override",
+    "classification_note": "Frequency resolved: Equipment log book completeness check"
   },
   {
     "id": 50,
@@ -1492,10 +1492,10 @@
     "weightage": 100,
     "allows_partial": false,
     "category": "recurring",
-    "frequency": "periodic_unspecified",
+    "frequency": "monthly",
     "evidence_format": "structured_form",
-    "classification_source": "rule_based_accepted",
-    "classification_note": ""
+    "classification_source": "manual_override",
+    "classification_note": "Frequency resolved: Maintenance/calibration record check"
   },
   {
     "id": 51,
@@ -1520,10 +1520,10 @@
     "weightage": 80,
     "allows_partial": true,
     "category": "recurring",
-    "frequency": "periodic_unspecified",
+    "frequency": "monthly",
     "evidence_format": "photo",
-    "classification_source": "rule_based_accepted",
-    "classification_note": ""
+    "classification_source": "manual_override",
+    "classification_note": "Frequency resolved: Log sheet display check per equipment"
   },
   {
     "id": 52,
@@ -1623,10 +1623,10 @@
     "weightage": 100,
     "allows_partial": false,
     "category": "recurring",
-    "frequency": "periodic_unspecified",
+    "frequency": "monthly",
     "evidence_format": "structured_form",
-    "classification_source": "rule_based_accepted",
-    "classification_note": ""
+    "classification_source": "manual_override",
+    "classification_note": "Frequency resolved: Equipment inventory reconciliation"
   },
   {
     "id": 54,
@@ -1650,10 +1650,10 @@
     "weightage": 100,
     "allows_partial": false,
     "category": "recurring",
-    "frequency": "periodic_unspecified",
+    "frequency": "monthly",
     "evidence_format": "photo",
-    "classification_source": "rule_based_accepted",
-    "classification_note": ""
+    "classification_source": "manual_override",
+    "classification_note": "Frequency resolved: Patient record completeness audit"
   },
   {
     "id": 55,
@@ -1677,10 +1677,10 @@
     "weightage": 100,
     "allows_partial": false,
     "category": "recurring",
-    "frequency": "periodic_unspecified",
+    "frequency": "monthly",
     "evidence_format": "photo",
-    "classification_source": "rule_based_accepted",
-    "classification_note": ""
+    "classification_source": "manual_override",
+    "classification_note": "Frequency resolved: Unique identifier compliance audit"
   },
   {
     "id": 56,
@@ -1704,10 +1704,10 @@
     "weightage": 100,
     "allows_partial": false,
     "category": "recurring",
-    "frequency": "periodic_unspecified",
+    "frequency": "monthly",
     "evidence_format": "photo",
-    "classification_source": "rule_based_accepted",
-    "classification_note": ""
+    "classification_source": "manual_override",
+    "classification_note": "Frequency resolved: Chronological record-keeping audit"
   },
   {
     "id": 57,
@@ -1731,10 +1731,10 @@
     "weightage": 100,
     "allows_partial": false,
     "category": "recurring",
-    "frequency": "periodic_unspecified",
+    "frequency": "monthly",
     "evidence_format": "photo",
-    "classification_source": "rule_based_accepted",
-    "classification_note": ""
+    "classification_source": "manual_override",
+    "classification_note": "Frequency resolved: Authorized-entry compliance audit"
   },
   {
     "id": 58,
@@ -1762,10 +1762,10 @@
     "weightage": 100,
     "allows_partial": false,
     "category": "recurring",
-    "frequency": "periodic_unspecified",
+    "frequency": "monthly",
     "evidence_format": "photo",
-    "classification_source": "rule_based_accepted",
-    "classification_note": ""
+    "classification_source": "manual_override",
+    "classification_note": "Frequency resolved: Entry dating/attribution audit"
   },
   {
     "id": 59,
@@ -1790,10 +1790,10 @@
     "weightage": 100,
     "allows_partial": false,
     "category": "recurring",
-    "frequency": "periodic_unspecified",
+    "frequency": "annual",
     "evidence_format": "photo",
-    "classification_source": "rule_based_accepted",
-    "classification_note": ""
+    "classification_source": "manual_override",
+    "classification_note": "Frequency resolved: Reporting system review"
   },
   {
     "id": 60,
@@ -1822,10 +1822,10 @@
     "weightage": 100,
     "allows_partial": false,
     "category": "recurring",
-    "frequency": "periodic_unspecified",
+    "frequency": "as_needed",
     "evidence_format": "photo",
-    "classification_source": "rule_based_accepted",
-    "classification_note": ""
+    "classification_source": "manual_override",
+    "classification_note": "Frequency resolved: Triggered whenever a critical/notifiable result occurs"
   },
   {
     "id": 61,
@@ -1881,10 +1881,10 @@
     "weightage": 100,
     "allows_partial": false,
     "category": "recurring",
-    "frequency": "periodic_unspecified",
+    "frequency": "quarterly",
     "evidence_format": "photo",
-    "classification_source": "rule_based_accepted",
-    "classification_note": ""
+    "classification_source": "manual_override",
+    "classification_note": "Frequency resolved: Patient report access system check"
   },
   {
     "id": 63,
@@ -2026,10 +2026,10 @@
     "weightage": 100,
     "allows_partial": false,
     "category": "recurring",
-    "frequency": "periodic_unspecified",
+    "frequency": "quarterly",
     "evidence_format": "photo",
-    "classification_source": "rule_based_accepted",
-    "classification_note": ""
+    "classification_source": "manual_override",
+    "classification_note": "Frequency resolved: Matches EQA participation cadence (Ind. 66)"
   },
   {
     "id": 68,
@@ -2222,10 +2222,10 @@
     "weightage": 100,
     "allows_partial": false,
     "category": "recurring",
-    "frequency": "periodic_unspecified",
+    "frequency": "daily",
     "evidence_format": "photo",
-    "classification_source": "rule_based_accepted",
-    "classification_note": ""
+    "classification_source": "manual_override",
+    "classification_note": "Frequency resolved: Internal QC controls availability — daily QC cadence"
   },
   {
     "id": 75,
@@ -2258,10 +2258,10 @@
     "weightage": 100,
     "allows_partial": false,
     "category": "recurring",
-    "frequency": "periodic_unspecified",
+    "frequency": "daily",
     "evidence_format": "photo",
-    "classification_source": "rule_based_accepted",
-    "classification_note": ""
+    "classification_source": "manual_override",
+    "classification_note": "Frequency resolved: Process cycle records — daily testing workflow"
   },
   {
     "id": 76,
@@ -2314,10 +2314,10 @@
     "weightage": 100,
     "allows_partial": false,
     "category": "recurring",
-    "frequency": "periodic_unspecified",
+    "frequency": "as_needed",
     "evidence_format": "photo",
-    "classification_source": "rule_based_accepted",
-    "classification_note": ""
+    "classification_source": "manual_override",
+    "classification_note": "Frequency resolved: Triggered by an identified QA gap"
   },
   {
     "id": 78,
@@ -2349,10 +2349,10 @@
     "weightage": 100,
     "allows_partial": false,
     "category": "recurring",
-    "frequency": "periodic_unspecified",
+    "frequency": "quarterly",
     "evidence_format": "photo",
-    "classification_source": "rule_based_accepted",
-    "classification_note": ""
+    "classification_source": "manual_override",
+    "classification_note": "Frequency resolved: QA error-recurrence review cycle"
   },
   {
     "id": 79,
@@ -2518,10 +2518,10 @@
     "weightage": 100,
     "allows_partial": false,
     "category": "recurring",
-    "frequency": "periodic_unspecified",
+    "frequency": "annual",
     "evidence_format": "photo",
-    "classification_source": "rule_based_accepted",
-    "classification_note": ""
+    "classification_source": "manual_override",
+    "classification_note": "Frequency resolved: Regular staff waste-handling training"
   },
   {
     "id": 85,
@@ -2635,10 +2635,10 @@
     "weightage": 100,
     "allows_partial": false,
     "category": "recurring",
-    "frequency": "periodic_unspecified",
+    "frequency": "as_needed",
     "evidence_format": "photo",
-    "classification_source": "rule_based_accepted",
-    "classification_note": ""
+    "classification_source": "manual_override",
+    "classification_note": "Frequency resolved: Triggered whenever an incident occurs"
   },
   {
     "id": 89,
@@ -2726,10 +2726,10 @@
     "weightage": 100,
     "allows_partial": false,
     "category": "recurring",
-    "frequency": "periodic_unspecified",
+    "frequency": "daily",
     "evidence_format": "photo",
-    "classification_source": "rule_based_accepted",
-    "classification_note": ""
+    "classification_source": "manual_override",
+    "classification_note": "Frequency resolved: Sample transport logging"
   },
   {
     "id": 92,
@@ -2873,10 +2873,10 @@
     "weightage": 100,
     "allows_partial": false,
     "category": "recurring",
-    "frequency": "periodic_unspecified",
+    "frequency": "weekly",
     "evidence_format": "photo",
-    "classification_source": "rule_based_accepted",
-    "classification_note": ""
+    "classification_source": "manual_override",
+    "classification_note": "Frequency resolved: Waste transport from collection centres"
   },
   {
     "id": 97,
@@ -3238,10 +3238,10 @@
     "weightage": 100,
     "allows_partial": false,
     "category": "recurring",
-    "frequency": "periodic_unspecified",
+    "frequency": "annual",
     "evidence_format": "photo",
-    "classification_source": "rule_based_accepted",
-    "classification_note": ""
+    "classification_source": "manual_override",
+    "classification_note": "Frequency resolved: Sentinel event list review"
   },
   {
     "id": 109,
@@ -3271,10 +3271,10 @@
     "weightage": 100,
     "allows_partial": false,
     "category": "recurring",
-    "frequency": "periodic_unspecified",
+    "frequency": "as_needed",
     "evidence_format": "photo",
-    "classification_source": "rule_based_accepted",
-    "classification_note": ""
+    "classification_source": "manual_override",
+    "classification_note": "Frequency resolved: Triggered whenever a sentinel event occurs"
   },
   {
     "id": 110,
@@ -3300,10 +3300,10 @@
     "weightage": 80,
     "allows_partial": true,
     "category": "recurring",
-    "frequency": "periodic_unspecified",
+    "frequency": "annual",
     "evidence_format": "photo",
-    "classification_source": "rule_based_accepted",
-    "classification_note": ""
+    "classification_source": "manual_override",
+    "classification_note": "Frequency resolved: Home-based care communication/transport readiness review"
   },
   {
     "id": 111,
@@ -3361,10 +3361,10 @@
     "weightage": 100,
     "allows_partial": false,
     "category": "recurring",
-    "frequency": "periodic_unspecified",
+    "frequency": "annual",
     "evidence_format": "photo",
-    "classification_source": "rule_based_accepted",
-    "classification_note": ""
+    "classification_source": "manual_override",
+    "classification_note": "Frequency resolved: Informed-consent situation list review"
   },
   {
     "id": 113,
@@ -3420,10 +3420,10 @@
     "weightage": 100,
     "allows_partial": false,
     "category": "recurring",
-    "frequency": "periodic_unspecified",
+    "frequency": "annual",
     "evidence_format": "photo",
-    "classification_source": "rule_based_accepted",
-    "classification_note": ""
+    "classification_source": "manual_override",
+    "classification_note": "Frequency resolved: Tariff list review"
   },
   {
     "id": 115,
@@ -3478,10 +3478,10 @@
     "weightage": 100,
     "allows_partial": false,
     "category": "recurring",
-    "frequency": "periodic_unspecified",
+    "frequency": "monthly",
     "evidence_format": "photo",
-    "classification_source": "rule_based_accepted",
-    "classification_note": ""
+    "classification_source": "manual_override",
+    "classification_note": "Frequency resolved: Complaint log review"
   },
   {
     "id": 117,
@@ -3505,10 +3505,10 @@
     "weightage": 100,
     "allows_partial": false,
     "category": "recurring",
-    "frequency": "periodic_unspecified",
+    "frequency": "as_needed",
     "evidence_format": "photo",
-    "classification_source": "rule_based_accepted",
-    "classification_note": ""
+    "classification_source": "manual_override",
+    "classification_note": "Frequency resolved: Triggered per complaint received"
   },
   {
     "id": 118,
@@ -3935,9 +3935,9 @@
     "weightage": 100,
     "allows_partial": false,
     "category": "recurring",
-    "frequency": "periodic_unspecified",
+    "frequency": "quarterly",
     "evidence_format": "photo",
-    "classification_source": "rule_based_accepted",
-    "classification_note": ""
+    "classification_source": "manual_override",
+    "classification_note": "Frequency resolved: Confidentiality control audit"
   }
 ]

@@ -26,4 +26,28 @@ means stop, not park.
 
 ## Entries
 
-(none yet)
+### #1 — structured_form exact field sets for indicators 6, 44, 46, 50
+
+- Stage/component: Stage 1, `apps/evidence/structured_forms.py` (entry form field
+  schemas for `evidence_format=structured_form` indicators).
+- Hit during: building the digital entry form for the 5 `structured_form`
+  indicators (6, 44, 46, 50, 53).
+- Why it's ambiguous: BUILD_PROMPT.md says a structured_form indicator's field
+  set should come from its `compliance_requirements` text when obvious.
+  Indicator 53 spells its fields out explicitly (date of purchase, source,
+  date of commissioning, calibration dates) and was implemented directly from
+  that text — not parked. Indicators 6, 44, 46 and 50 only describe the
+  *existence* of a register/log ("up-to-date stock registers", "up-dated
+  inventory of stored reagents", "log books contain record of...
+  maintenance") without listing the actual columns the lab's real paper
+  registers use.
+- Stub implemented: best-effort field sets in
+  `apps/evidence/structured_forms.py::STRUCTURED_FORM_SCHEMAS` for indicators
+  6, 44, 46, 50 (e.g. #44 stock register: date/item/qty received/qty
+  issued/remarks), inferred from the requirement wording, not from the lab's
+  actual register format.
+- What needs deciding: Munaim should confirm these field sets against the
+  actual paper registers currently used at Al Shifa Laboratory for: pathologist
+  presence log (#6), stock register (#44), reagent inventory (#46), and
+  equipment maintenance log (#50) — and we adjust the schema to match exactly.
+- Status: OPEN

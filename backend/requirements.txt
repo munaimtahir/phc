@@ -1,5 +1,6 @@
 django>=5.0
 djangorestframework
+django-filter
 psycopg2-binary
 django-cors-headers
 celery
@@ -7,3 +8,6 @@ redis
 gunicorn
 python-dotenv
 anthropic
+reportlab
+Pillow
+pypdf

@@ -1,14 +1,32 @@
-# Frontend (React + Vite + TypeScript + Tailwind)
+# React + TypeScript + Vite
 
-Not yet a real Vite project — placeholder layout for Stage 0 to scaffold
-properly (`npm create vite@latest . -- --template react-ts`, then add
-Tailwind). Don't hand-write `vite.config.ts`/`tsconfig.json`; generate them.
+This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
 
-## Intended page boundaries
+Currently, two official plugins are available:
 
-- `src/pages/registry/` — Stage 0. Read-only indicator registry, filterable.
-- `src/pages/daily/` — Stage 1. Daily due-list, recurring evidence entry form.
-- `src/pages/print/` — Stage 2. Print pack trigger + preview.
-- `src/pages/drafting/` — Section B. Draft generation UI, review/approve screen.
-- `src/lib/api.ts` — single place for API base URL + fetch wrappers, so the
-  backend URL only needs changing in one spot.
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+
+## React Compiler
+
+The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+
+## Expanding the Oxlint configuration
+
+If you are developing a production application, we recommend enabling type-aware lint rules by installing `oxlint-tsgolint` and editing `.oxlintrc.json`:
+
+```json
+{
+  "$schema": "./node_modules/oxlint/configuration_schema.json",
+  "plugins": ["react", "typescript", "oxc"],
+  "options": {
+    "typeAware": true
+  },
+  "rules": {
+    "react/rules-of-hooks": "error",
+    "react/only-export-components": ["warn", { "allowConstantExport": true }]
+  }
+}
+```
+
+See the [Oxlint rules documentation](https://oxc.rs/docs/guide/usage/linter/rules) for the full list of rules and categories.

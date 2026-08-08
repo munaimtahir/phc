@@ -1,5 +1,4 @@
-# Scaffold only — services are stubs until Stage 0 defines real Dockerfiles.
-# Fill in as each stage is built; don't pre-build what isn't scoped yet.
+name: phc-msds-tracker
 
 services:
   db:
@@ -8,32 +7,44 @@ services:
     volumes:
       - pgdata:/var/lib/postgresql/data
     ports:
-      - "5432:5432"
+      - "127.0.0.1:5439:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER}"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
 
   redis:
     image: redis:7
     ports:
-      - "6379:6379"
+      - "127.0.0.1:6389:6379"
 
   backend:
     build: ./backend
     env_file: .env
     depends_on:
-      - db
-      - redis
+      db:
+        condition: service_healthy
+      redis:
+        condition: service_started
+    environment:
+      - INDICATORS_MASTER_PATH=/docs/data/indicators_master.json
     volumes:
       - ./backend:/app
+      - ./docs:/docs
     ports:
-      - "8000:8000"
+      - "127.0.0.1:8000:8000"
 
   frontend:
     build: ./frontend
     env_file: .env
+    depends_on:
+      - backend
     volumes:
       - ./frontend:/app
       - /app/node_modules
     ports:
-      - "5173:5173"
+      - "127.0.0.1:5173:5173"
 
 volumes:
   pgdata:

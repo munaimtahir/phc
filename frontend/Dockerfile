@@ -1,4 +1,3 @@
-# Placeholder — replace once Stage 0 generates the real Vite project.
 FROM node:20-slim
 WORKDIR /app
 COPY package*.json ./

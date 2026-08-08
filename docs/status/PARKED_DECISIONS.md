@@ -27,3 +27,12 @@ means stop, not park.
 ## Entries
 
 (none yet)
+
+### #1 — Structured evidence field schemas
+
+- Stage/component: Stage 1, structured-form entry fields for five indicators
+- Hit during: building the evidence entry form
+- Why it's ambiguous: the locked pack specifies `structured_form` and says to use the exact field set implied by each indicator's requirements, but it does not define a canonical field schema for these five records.
+- Stub implemented: a structured JSON payload editor in `frontend/src/components/EvidenceEntryForm.tsx`; backend stores the submitted JSON without inventing field names.
+- What needs deciding: the field names, types, and validation rules for each structured-form indicator.
+- Status: OPEN

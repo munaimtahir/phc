@@ -13,6 +13,7 @@ media/
 node_modules/
 frontend/dist/
 frontend/.vite/
+frontend/*.tsbuildinfo
 npm-debug.log*
 
 # Env / secrets

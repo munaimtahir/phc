@@ -12,6 +12,7 @@ export default function Login() {
     setError("");
     try {
       await login(username, password);
+      window.location.assign("/registry");
     } catch {
       setError("Invalid credentials.");
     }

@@ -1,0 +1,281 @@
+{
+  "generated_by": "AccrediOps Phase 1 compliance run (AI-assisted drafting, human approval pending)",
+  "status_legend": {
+    "draft_pending_approval": "Drafted by AI, not yet reviewed or signed \u2014 not valid evidence",
+    "approved_filed": "Signed by both Dr. Munaim Tahir and Dr. Mubashr Ahmed \u2014 valid filed evidence (is_current=true)"
+  },
+  "ingestion_note": "When the Evidence app (backend/apps/evidence) is built, each entry below maps to one EvidenceRecord per indicator_id, with payload = file, is_current=false until status is updated to approved_filed by a human action in-app.",
+  "documents": [
+    {
+      "doc_no": "ASL-POL-01",
+      "filename": "ASL-POL-01_memorandum_of_understanding_referral_laboratory_linkage.docx",
+      "title": "Memorandum of Understanding \u2014 Referral Laboratory Linkage",
+      "indicator_ids": [
+        5
+      ],
+      "standards": [
+        "ROM-1"
+      ],
+      "version": "1.0",
+      "status": "draft_pending_approval",
+      "placeholders_outstanding": []
+    },
+    {
+      "doc_no": "ASL-POL-02",
+      "filename": "ASL-POL-02_laboratory_policy_sop_manual_governing_document.docx",
+      "title": "Laboratory Policy & SOP Manual \u2014 Governing Document",
+      "indicator_ids": [
+        8
+      ],
+      "standards": [
+        "ROM-3"
+      ],
+      "version": "1.0",
+      "status": "draft_pending_approval",
+      "placeholders_outstanding": []
+    },
+    {
+      "doc_no": "ASL-POL-03",
+      "filename": "ASL-POL-03_emergency_policy_standard_operating_procedures.docx",
+      "title": "Emergency Policy & Standard Operating Procedures",
+      "indicator_ids": [
+        9
+      ],
+      "standards": [
+        "ROM-3"
+      ],
+      "version": "1.0",
+      "status": "draft_pending_approval",
+      "placeholders_outstanding": []
+    },
+    {
+      "doc_no": "ASL-POL-04",
+      "filename": "ASL-POL-04_budget_approval_resource_allocation_policy.docx",
+      "title": "Budget Approval & Resource Allocation Policy",
+      "indicator_ids": [
+        10
+      ],
+      "standards": [
+        "ROM-3"
+      ],
+      "version": "1.0",
+      "status": "draft_pending_approval",
+      "placeholders_outstanding": []
+    },
+    {
+      "doc_no": "ASL-POL-05",
+      "filename": "ASL-POL-05_section_head_appointment_policy_letters.docx",
+      "title": "Section Head Appointment Policy & Letters",
+      "indicator_ids": [
+        12
+      ],
+      "standards": [
+        "ROM-3"
+      ],
+      "version": "1.0",
+      "status": "draft_pending_approval",
+      "placeholders_outstanding": []
+    },
+    {
+      "doc_no": "ASL-POL-06",
+      "filename": "ASL-POL-06_recruitment_job_description_policy.docx",
+      "title": "Recruitment & Job Description Policy",
+      "indicator_ids": [
+        25,
+        26,
+        27
+      ],
+      "standards": [
+        "HRM-1"
+      ],
+      "version": "1.0",
+      "status": "draft_pending_approval",
+      "placeholders_outstanding": []
+    },
+    {
+      "doc_no": "ASL-POL-07",
+      "filename": "ASL-POL-07_orientation_policy_awareness_appraisal_induction_policy.docx",
+      "title": "Orientation, Policy Awareness & Appraisal Induction Policy",
+      "indicator_ids": [
+        28,
+        29,
+        33
+      ],
+      "standards": [
+        "HRM-2",
+        "HRM-3"
+      ],
+      "version": "1.0",
+      "status": "draft_pending_approval",
+      "placeholders_outstanding": []
+    },
+    {
+      "doc_no": "ASL-POL-08",
+      "filename": "ASL-POL-08_in_service_training_plan.docx",
+      "title": "In-Service Training Plan",
+      "indicator_ids": [
+        37
+      ],
+      "standards": [
+        "HRM-5"
+      ],
+      "version": "1.0",
+      "status": "draft_pending_approval",
+      "placeholders_outstanding": []
+    },
+    {
+      "doc_no": "ASL-POL-09",
+      "filename": "ASL-POL-09_procurement_procedure_sop.docx",
+      "title": "Procurement Procedure SOP",
+      "indicator_ids": [
+        41
+      ],
+      "standards": [
+        "MER-1"
+      ],
+      "version": "1.0",
+      "status": "draft_pending_approval",
+      "placeholders_outstanding": []
+    },
+    {
+      "doc_no": "ASL-POL-10",
+      "filename": "ASL-POL-10_reagent_management_sop_storage_use_labelling.docx",
+      "title": "Reagent Management SOP \u2014 Storage, Use & Labelling",
+      "indicator_ids": [
+        45,
+        48
+      ],
+      "standards": [
+        "MER-2"
+      ],
+      "version": "1.0",
+      "status": "draft_pending_approval",
+      "placeholders_outstanding": []
+    },
+    {
+      "doc_no": "ASL-POL-11",
+      "filename": "ASL-POL-11_quality_assurance_program_focal_person_designation.docx",
+      "title": "Quality Assurance Program & Focal Person Designation",
+      "indicator_ids": [
+        63,
+        64
+      ],
+      "standards": [
+        "QA-1"
+      ],
+      "version": "1.0",
+      "status": "draft_pending_approval",
+      "placeholders_outstanding": [
+        "EQA scheme name and accreditation not yet entered"
+      ]
+    },
+    {
+      "doc_no": "ASL-SOP-12",
+      "filename": "ASL-SOP-12_specimen_management_sop_collection_through_disposal.docx",
+      "title": "Specimen Management SOP \u2014 Collection Through Disposal",
+      "indicator_ids": [
+        68,
+        69,
+        70,
+        71,
+        72,
+        73
+      ],
+      "standards": [
+        "QA-3"
+      ],
+      "version": "1.0",
+      "status": "draft_pending_approval",
+      "placeholders_outstanding": []
+    },
+    {
+      "doc_no": "ASL-SOP-13",
+      "filename": "ASL-SOP-13_biosafety_sop_governance.docx",
+      "title": "Biosafety SOP & Governance",
+      "indicator_ids": [
+        79,
+        80,
+        81
+      ],
+      "standards": [
+        "BSBS-1"
+      ],
+      "version": "1.0",
+      "status": "draft_pending_approval",
+      "placeholders_outstanding": []
+    },
+    {
+      "doc_no": "ASL-SOP-14",
+      "filename": "ASL-SOP-14_waste_management_sop_governance.docx",
+      "title": "Waste Management SOP & Governance",
+      "indicator_ids": [
+        92,
+        93,
+        95
+      ],
+      "standards": [
+        "BSBS-6"
+      ],
+      "version": "1.0",
+      "status": "draft_pending_approval",
+      "placeholders_outstanding": [
+        "Signed waste disposal contract copy not yet attached",
+        "Safe Waste Disposal's license/registration number not yet entered"
+      ]
+    },
+    {
+      "doc_no": "ASL-SOP-15",
+      "filename": "ASL-SOP-15_first_aid_emergency_patient_care_protocol.docx",
+      "title": "First Aid & Emergency Patient Care Protocol",
+      "indicator_ids": [
+        106
+      ],
+      "standards": [
+        "COP-1"
+      ],
+      "version": "1.0",
+      "status": "draft_pending_approval",
+      "placeholders_outstanding": [
+        "Name/contact number of nearest hospital not yet entered"
+      ]
+    },
+    {
+      "doc_no": "ASL-POL-16",
+      "filename": "ASL-POL-16_consent_policy_incapable_patients.docx",
+      "title": "Consent Policy \u2014 Incapable Patients",
+      "indicator_ids": [
+        113
+      ],
+      "standards": [
+        "PRE-1"
+      ],
+      "version": "1.0",
+      "status": "draft_pending_approval",
+      "placeholders_outstanding": []
+    },
+    {
+      "doc_no": "ASL-POL-17",
+      "filename": "ASL-POL-17_additional_incidental_reports_disclosure_policy.docx",
+      "title": "Additional / Incidental Reports Disclosure Policy",
+      "indicator_ids": [
+        115
+      ],
+      "standards": [
+        "PRE-2"
+      ],
+      "version": "1.0",
+      "status": "draft_pending_approval",
+      "placeholders_outstanding": []
+    },
+    {
+      "doc_no": "ASL-INDEX-00",
+      "filename": "ASL-INDEX-00_review_and_approval_tracker.docx",
+      "title": "One-Time Indicator Compliance Bundle \u2014 Review & Approval Tracker",
+      "indicator_ids": [],
+      "standards": [],
+      "version": "1.0",
+      "status": "n/a \u2014 tracking sheet, not evidence",
+      "placeholders_outstanding": []
+    }
+  ]
+}

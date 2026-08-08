@@ -1,0 +1,498 @@
+{
+  "generated_by": "AccrediOps Phase 2 compliance run (AI-assisted drafting, human approval pending)",
+  "status_legend": {
+    "draft_pending_approval": "Drafted by AI, not yet reviewed or signed \u2014 not valid evidence",
+    "approved_filed": "Signed by both Dr. Munaim Tahir and Dr. Mubashr Ahmed \u2014 valid filed evidence (is_current=true)"
+  },
+  "ingestion_note": "Each entry maps to one EvidenceRecord per indicator_id, payload = file, is_current=false until approved. Templates additionally require ONGOING dated entries once operational \u2014 this manifest tracks the template document, not the per-entry recurring evidence stream (that becomes Section A daily due-list data once Stage 1 is built).",
+  "documents": [
+    {
+      "doc_no": "ASL-REC-01",
+      "filename": "ASL-REC-01_laboratory_performance_audit_kit_utilization_monitoring.docx",
+      "title": "Laboratory Performance Audit & Kit Utilization Monitoring",
+      "indicator_ids": [
+        104,
+        105
+      ],
+      "standards": [
+        "AAC-3"
+      ],
+      "frequency": "Biannual (performance audit) / Monthly (kit utilization)",
+      "version": "1.0",
+      "status": "draft_pending_approval",
+      "placeholders_outstanding": []
+    },
+    {
+      "doc_no": "ASL-REC-02",
+      "filename": "ASL-REC-02_biosafety_monitoring_report_log.docx",
+      "title": "Biosafety Monitoring Report Log",
+      "indicator_ids": [
+        82
+      ],
+      "standards": [
+        "BSBS-1"
+      ],
+      "frequency": "Monthly",
+      "version": "1.0",
+      "status": "draft_pending_approval",
+      "placeholders_outstanding": []
+    },
+    {
+      "doc_no": "ASL-REC-03",
+      "filename": "ASL-REC-03_biosafety_compliance_monitoring_pack.docx",
+      "title": "Biosafety Compliance Monitoring Pack",
+      "indicator_ids": [
+        83,
+        84,
+        85
+      ],
+      "standards": [
+        "BSBS-2"
+      ],
+      "frequency": "Monthly (PPE) / Periodic (vaccination) / Annual (medical checkup)",
+      "version": "1.0",
+      "status": "draft_pending_approval",
+      "placeholders_outstanding": []
+    },
+    {
+      "doc_no": "ASL-REC-04",
+      "filename": "ASL-REC-04_biosafety_incident_spill_kit_supply_monitoring.docx",
+      "title": "Biosafety Incident & Spill-Kit Supply Monitoring",
+      "indicator_ids": [
+        88,
+        89
+      ],
+      "standards": [
+        "BSBS-4"
+      ],
+      "frequency": "As-occurring (incidents) / Monthly (spill-kit stock)",
+      "version": "1.0",
+      "status": "draft_pending_approval",
+      "placeholders_outstanding": []
+    },
+    {
+      "doc_no": "ASL-REC-05",
+      "filename": "ASL-REC-05_sample_transportation_log.docx",
+      "title": "Sample Transportation Log",
+      "indicator_ids": [
+        91
+      ],
+      "standards": [
+        "BSBS-5"
+      ],
+      "frequency": "Per occurrence",
+      "version": "1.0",
+      "status": "draft_pending_approval",
+      "placeholders_outstanding": []
+    },
+    {
+      "doc_no": "ASL-REC-06",
+      "filename": "ASL-REC-06_waste_transportation_record_from_collection_centres.docx",
+      "title": "Waste Transportation Record (From Collection Centres)",
+      "indicator_ids": [
+        96
+      ],
+      "standards": [
+        "BSBS-6"
+      ],
+      "frequency": "Per collection event",
+      "version": "1.0",
+      "status": "draft_pending_approval",
+      "placeholders_outstanding": [
+        "No satellite collection centres currently \u2014 register ready but unused"
+      ]
+    },
+    {
+      "doc_no": "ASL-REC-07",
+      "filename": "ASL-REC-07_sentinel_event_definition_analysis_log.docx",
+      "title": "Sentinel Event Definition & Analysis Log",
+      "indicator_ids": [
+        108,
+        109
+      ],
+      "standards": [
+        "COP-2"
+      ],
+      "frequency": "As-occurring",
+      "version": "1.0",
+      "status": "draft_pending_approval",
+      "placeholders_outstanding": []
+    },
+    {
+      "doc_no": "ASL-REC-08",
+      "filename": "ASL-REC-08_home_sample_collection_readiness_checklist.docx",
+      "title": "Home Sample Collection Readiness Checklist",
+      "indicator_ids": [
+        110
+      ],
+      "standards": [
+        "COP-3"
+      ],
+      "frequency": "Periodic",
+      "version": "1.0",
+      "status": "draft_pending_approval",
+      "placeholders_outstanding": []
+    },
+    {
+      "doc_no": "ASL-REC-09",
+      "filename": "ASL-REC-09_regulatory_update_log.docx",
+      "title": "Regulatory Update Log",
+      "indicator_ids": [
+        15
+      ],
+      "standards": [
+        "FMS-1"
+      ],
+      "frequency": "Periodic",
+      "version": "1.0",
+      "status": "draft_pending_approval",
+      "placeholders_outstanding": []
+    },
+    {
+      "doc_no": "ASL-REC-10",
+      "filename": "ASL-REC-10_fire_emergency_preparedness_program.docx",
+      "title": "Fire & Emergency Preparedness Program",
+      "indicator_ids": [
+        19,
+        23,
+        24
+      ],
+      "standards": [
+        "FMS-3"
+      ],
+      "frequency": "Annual (mock drill) / Periodic (plan review, training)",
+      "version": "1.0",
+      "status": "draft_pending_approval",
+      "placeholders_outstanding": [
+        "Current fire/non-fire detection provisions not yet confirmed (physical item, Phase 3)"
+      ]
+    },
+    {
+      "doc_no": "ASL-REC-11",
+      "filename": "ASL-REC-11_staff_patient_rights_awareness_log.docx",
+      "title": "Staff & Patient Rights Awareness Log",
+      "indicator_ids": [
+        30,
+        31
+      ],
+      "standards": [
+        "HRM-2"
+      ],
+      "frequency": "As-needed (contract/JD) / Periodic (orientation)",
+      "version": "1.0",
+      "status": "draft_pending_approval",
+      "placeholders_outstanding": []
+    },
+    {
+      "doc_no": "ASL-REC-12",
+      "filename": "ASL-REC-12_performance_appraisal_program_record.docx",
+      "title": "Performance Appraisal Program & Record",
+      "indicator_ids": [
+        32,
+        34,
+        35
+      ],
+      "standards": [
+        "HRM-3"
+      ],
+      "frequency": "Annual",
+      "version": "1.0",
+      "status": "draft_pending_approval",
+      "placeholders_outstanding": []
+    },
+    {
+      "doc_no": "ASL-REC-13",
+      "filename": "ASL-REC-13_personal_file_maintenance_checklist.docx",
+      "title": "Personal File Maintenance Checklist",
+      "indicator_ids": [
+        36
+      ],
+      "standards": [
+        "HRM-4"
+      ],
+      "frequency": "Periodic",
+      "version": "1.0",
+      "status": "draft_pending_approval",
+      "placeholders_outstanding": []
+    },
+    {
+      "doc_no": "ASL-REC-14",
+      "filename": "ASL-REC-14_in_service_training_record_log.docx",
+      "title": "In-Service Training Record Log",
+      "indicator_ids": [
+        38
+      ],
+      "standards": [
+        "HRM-5"
+      ],
+      "frequency": "Periodic (per session, per the Training Plan in ASL-POL-08)",
+      "version": "1.0",
+      "status": "draft_pending_approval",
+      "placeholders_outstanding": []
+    },
+    {
+      "doc_no": "ASL-REC-15",
+      "filename": "ASL-REC-15_credential_verification_sop_log.docx",
+      "title": "Credential Verification SOP & Log",
+      "indicator_ids": [
+        39,
+        40
+      ],
+      "standards": [
+        "HRM-6"
+      ],
+      "frequency": "Periodic (at hiring, and for any newly added credential)",
+      "version": "1.0",
+      "status": "draft_pending_approval",
+      "placeholders_outstanding": []
+    },
+    {
+      "doc_no": "ASL-REC-16",
+      "filename": "ASL-REC-16_procurement_records_stock_entry_log.docx",
+      "title": "Procurement Records & Stock Entry Log",
+      "indicator_ids": [
+        42,
+        43,
+        44
+      ],
+      "standards": [
+        "MER-1"
+      ],
+      "frequency": "Monthly (stock entry) / Per order (specifications, orders)",
+      "version": "1.0",
+      "status": "draft_pending_approval",
+      "placeholders_outstanding": []
+    },
+    {
+      "doc_no": "ASL-REC-17",
+      "filename": "ASL-REC-17_reagent_inventory_near_expiry_alert_log.docx",
+      "title": "Reagent Inventory & Near-Expiry Alert Log",
+      "indicator_ids": [
+        46,
+        47
+      ],
+      "standards": [
+        "MER-2"
+      ],
+      "frequency": "Monthly",
+      "version": "1.0",
+      "status": "draft_pending_approval",
+      "placeholders_outstanding": []
+    },
+    {
+      "doc_no": "ASL-REC-18",
+      "filename": "ASL-REC-18_equipment_log_book_maintenance_inventory_register.docx",
+      "title": "Equipment Log Book, Maintenance & Inventory Register",
+      "indicator_ids": [
+        49,
+        50,
+        51,
+        53
+      ],
+      "standards": [
+        "MER-3"
+      ],
+      "frequency": "Periodic (per use, per maintenance event)",
+      "version": "1.0",
+      "status": "draft_pending_approval",
+      "placeholders_outstanding": []
+    },
+    {
+      "doc_no": "ASL-REC-19",
+      "filename": "ASL-REC-19_informed_consent_situations_list.docx",
+      "title": "Informed Consent Situations List",
+      "indicator_ids": [
+        112
+      ],
+      "standards": [
+        "PRE-1"
+      ],
+      "frequency": "Periodic review",
+      "version": "1.0",
+      "status": "draft_pending_approval",
+      "placeholders_outstanding": []
+    },
+    {
+      "doc_no": "ASL-REC-20",
+      "filename": "ASL-REC-20_tariff_list_display_update_log.docx",
+      "title": "Tariff List Display & Update Log",
+      "indicator_ids": [
+        114
+      ],
+      "standards": [
+        "PRE-2"
+      ],
+      "frequency": "Periodic",
+      "version": "1.0",
+      "status": "draft_pending_approval",
+      "placeholders_outstanding": [
+        "Actual current price list not yet entered"
+      ]
+    },
+    {
+      "doc_no": "ASL-REC-21",
+      "filename": "ASL-REC-21_patient_complaints_confidentiality_log.docx",
+      "title": "Patient Complaints & Confidentiality Log",
+      "indicator_ids": [
+        116,
+        117,
+        118
+      ],
+      "standards": [
+        "PRE-3"
+      ],
+      "frequency": "As-occurring (complaints) / Periodic (access log)",
+      "version": "1.0",
+      "status": "draft_pending_approval",
+      "placeholders_outstanding": []
+    },
+    {
+      "doc_no": "ASL-REC-22",
+      "filename": "ASL-REC-22_eqa_participation_report_log.docx",
+      "title": "EQA Participation & Report Log",
+      "indicator_ids": [
+        66,
+        67
+      ],
+      "standards": [
+        "QA-2"
+      ],
+      "frequency": "Quarterly (participation) / Periodic (report log)",
+      "version": "1.0",
+      "status": "draft_pending_approval",
+      "placeholders_outstanding": [
+        "EQA scheme provider name not yet entered (same placeholder as ASL-POL-11)"
+      ]
+    },
+    {
+      "doc_no": "ASL-REC-23",
+      "filename": "ASL-REC-23_iqa_controls_process_cycle_log.docx",
+      "title": "IQA Controls & Process Cycle Log",
+      "indicator_ids": [
+        74,
+        75
+      ],
+      "standards": [
+        "QA-3"
+      ],
+      "frequency": "Per test run",
+      "version": "1.0",
+      "status": "draft_pending_approval",
+      "placeholders_outstanding": []
+    },
+    {
+      "doc_no": "ASL-REC-24",
+      "filename": "ASL-REC-24_qa_gap_analysis_corrective_action_log.docx",
+      "title": "QA Gap Analysis & Corrective Action Log",
+      "indicator_ids": [
+        76,
+        77,
+        78
+      ],
+      "standards": [
+        "QA-4"
+      ],
+      "frequency": "Quarterly",
+      "version": "1.0",
+      "status": "draft_pending_approval",
+      "placeholders_outstanding": []
+    },
+    {
+      "doc_no": "ASL-REC-25",
+      "filename": "ASL-REC-25_daily_duty_qualification_verification_log.docx",
+      "title": "Daily Duty / Qualification Verification Log",
+      "indicator_ids": [
+        6
+      ],
+      "standards": [
+        "ROM-2"
+      ],
+      "frequency": "Daily",
+      "version": "1.0",
+      "status": "draft_pending_approval",
+      "placeholders_outstanding": []
+    },
+    {
+      "doc_no": "ASL-REC-26",
+      "filename": "ASL-REC-26_research_activity_support_log.docx",
+      "title": "Research Activity Support Log",
+      "indicator_ids": [
+        13
+      ],
+      "standards": [
+        "ROM-3"
+      ],
+      "frequency": "Periodic",
+      "version": "1.0",
+      "status": "draft_pending_approval",
+      "placeholders_outstanding": [
+        "N/A currently \u2014 no active research activity"
+      ]
+    },
+    {
+      "doc_no": "ASL-REC-27",
+      "filename": "ASL-REC-27_laboratory_record_keeping_sop_electronic_records.docx",
+      "title": "Laboratory Record-Keeping SOP (Electronic Records)",
+      "indicator_ids": [
+        54,
+        55,
+        56,
+        57,
+        58
+      ],
+      "standards": [
+        "RRS-1"
+      ],
+      "frequency": "Continuous (system-enforced) / Periodic verification",
+      "version": "1.0",
+      "status": "draft_pending_approval",
+      "placeholders_outstanding": []
+    },
+    {
+      "doc_no": "ASL-REC-28",
+      "filename": "ASL-REC-28_computerized_reporting_critical_notifiable_disease_log.docx",
+      "title": "Computerized Reporting & Critical/Notifiable Disease Log",
+      "indicator_ids": [
+        59,
+        60
+      ],
+      "standards": [
+        "RRS-2"
+      ],
+      "frequency": "Per report / As-occurring",
+      "version": "1.0",
+      "status": "draft_pending_approval",
+      "placeholders_outstanding": [
+        "Notifiable disease list not yet confirmed against current Punjab/national requirements"
+      ]
+    },
+    {
+      "doc_no": "ASL-REC-29",
+      "filename": "ASL-REC-29_patient_report_access_code_system.docx",
+      "title": "Patient Report Access Code System",
+      "indicator_ids": [
+        62
+      ],
+      "standards": [
+        "RRS-3"
+      ],
+      "frequency": "Per report",
+      "version": "1.0",
+      "status": "draft_pending_approval",
+      "placeholders_outstanding": [
+        "Whether the existing LIS supports patient-facing online access code not yet confirmed"
+      ]
+    },
+    {
+      "doc_no": "ASL-INDEX-01",
+      "filename": "ASL-INDEX-01_recurring_review_and_approval_tracker.docx",
+      "title": "Recurring Indicator Templates \u2014 Review & Approval Tracker",
+      "indicator_ids": [],
+      "standards": [],
+      "frequency": null,
+      "version": "1.0",
+      "status": "n/a \u2014 tracking sheet, not evidence",
+      "placeholders_outstanding": []
+    }
+  ]
+}
